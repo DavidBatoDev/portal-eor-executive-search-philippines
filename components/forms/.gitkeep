@@ -1,0 +1,2 @@
+# Form components (§9): InquiryForm, AssessmentSteps, shared fields.
+# Wire to /api/inquiries and /api/assessment with the Zod schema in lib/validation.ts.
