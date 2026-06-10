@@ -3,6 +3,7 @@ import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/layout/Nav";
 import { SmoothAnchors } from "@/components/layout/SmoothAnchors";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
         {children}
         {/* No global <Footer> here: inner service pages omit it (§6).
             Compose <Footer> per-page on the homepage and other pages that keep it. */}
+        <ChatWidget />
       </body>
     </html>
   );
