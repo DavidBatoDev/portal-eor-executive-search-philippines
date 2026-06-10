@@ -18,11 +18,13 @@ import {
   faq,
   finalCta,
 } from "@/lib/content/eor";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: meta.title,
   description: meta.description,
-};
+  path: "/eor",
+});
 
 export default function EorPage() {
   return (

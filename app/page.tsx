@@ -14,11 +14,13 @@ import { Faq } from "@/components/sections/Faq";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/layout/Footer";
 import { meta, faq, finalCta } from "@/lib/content/home";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: meta.title,
   description: meta.description,
-};
+  path: "/",
+});
 
 export default function Home() {
   return (
