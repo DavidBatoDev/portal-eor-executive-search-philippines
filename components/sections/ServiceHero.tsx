@@ -1,10 +1,8 @@
-import { Fragment } from "react";
-import Link from "next/link";
 import { Container } from "@/components/layout/Container";
-import { Icon } from "@/components/ui/Icon";
+import { Icon, type IconName } from "@/components/ui/Icon";
+import { Button } from "@/components/ui/Button";
 import { RingWatermark } from "@/components/ui/RingWatermark";
 
-type Crumb = { label: string; href: string };
 type RoleSearch = {
   service: string;
   placeholder: string;
@@ -12,57 +10,72 @@ type RoleSearch = {
   hint: string;
 };
 
-// Inner service-page hero: single centered column, compact height, skyline
-// parallax background (§6). Optional role-search bar GETs to /assessment.
+// Centered blue eyebrow (day theme) — the gold Eyebrow's counterpart.
+function BlueEyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="mb-[1.1rem] inline-flex items-center justify-center gap-[.6rem] font-body text-[.78rem] font-semibold uppercase tracking-[.14em] text-blue">
+      <span aria-hidden className="h-[2px] w-[26px] bg-blue" />
+      {children}
+      <span aria-hidden className="h-[2px] w-[26px] bg-blue" />
+    </span>
+  );
+}
+
+// Light, compact "day" service-page hero — the counterpart to the dark "night"
+// homepage hero, kept smaller so it never reads as another homepage. Dark text,
+// dark-blue accents, white service emblem. Heading stays an <h2>; location is
+// shown in the nav ("Services · <name>").
 export function ServiceHero({
-  breadcrumb,
-  current,
+  icon,
+  eyebrow,
   titlePre,
   titleEm,
   titlePost,
   lead,
+  cta,
   roleSearch,
 }: {
-  breadcrumb: Crumb[];
-  current: string;
+  icon: IconName;
+  eyebrow: string;
   titlePre: string;
   titleEm?: string;
   titlePost?: string;
   lead: string;
+  cta?: { label: string; href: string };
   roleSearch?: RoleSearch;
 }) {
   return (
-    <section className="hero-skyline on-dark relative overflow-hidden pt-[clamp(8.5rem,7rem+6vw,11rem)] pb-[clamp(5rem,3.5rem+4vw,7rem)]">
+    <section className="hero-skyline-sub relative overflow-hidden border-b border-border pb-[clamp(2.75rem,2rem+2.5vw,4rem)] pt-[clamp(6rem,4.75rem+3vw,7.5rem)]">
       <RingWatermark
         circles={[22, 38, 54, 70, 86, 99]}
-        className="left-1/2 top-[-26%] h-[780px] w-[780px] -translate-x-1/2 opacity-[0.07]"
+        colorClass="text-blue"
+        className="left-1/2 top-[-30%] h-[560px] w-[560px] -translate-x-1/2 opacity-[0.16]"
       />
       <Container className="relative z-[2]">
-        <div className="mx-auto max-w-[940px] text-center">
-          <nav
-            aria-label="Breadcrumb"
-            className="mb-[1.6rem] flex flex-wrap items-center justify-center gap-2 font-body text-[.82rem] text-white/55"
-          >
-            {breadcrumb.map((b) => (
-              <Fragment key={b.href}>
-                <Link href={b.href} className="text-white/70 transition-colors hover:text-gold">
-                  {b.label}
-                </Link>
-                <Icon name="chevron-right" strokeWidth={2.2} className="h-[14px] w-[14px] opacity-60" />
-              </Fragment>
-            ))}
-            <span className="font-semibold text-gold-soft">{current}</span>
-          </nav>
+        <div className="mx-auto max-w-[820px] text-center">
+          <span className="mx-auto mb-[1.3rem] grid h-[62px] w-[62px] place-items-center rounded-full border border-white/60 bg-white text-navy shadow-[0_16px_38px_rgba(16,24,40,.2)]">
+            <Icon name={icon} strokeWidth={1.7} className="h-[28px] w-[28px]" />
+          </span>
 
-          <h1 className="mx-auto max-w-[32ch] break-words text-[clamp(1.95rem,1.25rem+2.3vw,2.85rem)] leading-[1.2]">
+          <BlueEyebrow>{eyebrow}</BlueEyebrow>
+
+          <h2 className="mx-auto max-w-[24ch] break-words text-navy">
             {titlePre}
-            {titleEm && <em className="not-italic text-gold">{titleEm}</em>}
+            {titleEm && <em className="not-italic text-blue">{titleEm}</em>}
             {titlePost}
-          </h1>
+          </h2>
 
-          <p className="lead mx-auto mt-8 max-w-[760px] leading-[1.7]">{lead}</p>
+          <p className="lead mx-auto mt-5 max-w-[660px] text-charcoal">{lead}</p>
 
-          {roleSearch && <RoleSearch {...roleSearch} />}
+          {roleSearch ? (
+            <RoleSearch {...roleSearch} />
+          ) : cta ? (
+            <div className="mt-[2rem] flex justify-center">
+              <Button href={cta.href} variant="primary" arrow>
+                {cta.label}
+              </Button>
+            </div>
+          ) : null}
         </div>
       </Container>
     </section>
@@ -77,10 +90,13 @@ function RoleSearch({ service, placeholder, submitLabel, hint }: RoleSearch) {
         method="get"
         role="search"
         aria-label="Start your workforce assessment"
-        className="mx-auto mt-[2.6rem] flex max-w-[660px] items-center gap-2 rounded-full border border-white/[.18] bg-white/[.06] p-[.5rem_.5rem_.5rem_1.35rem] text-left shadow-[0_18px_50px_rgba(0,0,0,.32)] backdrop-blur-[8px] transition-[border-color,box-shadow] focus-within:border-gold/60 focus-within:shadow-[0_0_0_4px_rgba(217,164,55,.14),0_18px_50px_rgba(0,0,0,.34)] max-[560px]:flex-col max-[560px]:items-stretch max-[560px]:gap-[.7rem] max-[560px]:rounded-[16px] max-[560px]:p-[.85rem]"
+        className="mx-auto mt-[2.2rem] flex max-w-[640px] items-center gap-2 rounded-full border border-border bg-white p-[.5rem_.5rem_.5rem_1.35rem] text-left shadow-lg transition-[border-color,box-shadow] focus-within:border-gold/60 focus-within:shadow-[0_0_0_4px_rgba(217,164,55,.14)] max-[560px]:flex-col max-[560px]:items-stretch max-[560px]:gap-[.7rem] max-[560px]:rounded-[16px] max-[560px]:p-[.85rem]"
       >
         <input type="hidden" name="service" value={service} />
-        <span className="grid flex-none place-items-center text-gold-soft max-[560px]:hidden" aria-hidden="true">
+        <span
+          className="grid flex-none place-items-center text-gold-deep max-[560px]:hidden"
+          aria-hidden="true"
+        >
           <Icon name="search" strokeWidth={1.8} className="h-[22px] w-[22px]" />
         </span>
         <input
@@ -90,7 +106,7 @@ function RoleSearch({ service, placeholder, submitLabel, hint }: RoleSearch) {
           required
           placeholder={placeholder}
           aria-label="Role you want to hire for"
-          className="min-w-0 flex-1 border-none bg-transparent p-[.75rem_.3rem] font-body text-[1.05rem] text-white outline-none placeholder:text-white/55 max-[560px]:rounded-[11px] max-[560px]:border max-[560px]:border-white/[.16] max-[560px]:bg-white/[.06] max-[560px]:p-[.9rem_1rem] max-[560px]:text-center max-[560px]:text-base"
+          className="min-w-0 flex-1 border-none bg-transparent p-[.75rem_.3rem] font-body text-[1.05rem] text-charcoal outline-none placeholder:text-body/60 max-[560px]:rounded-[11px] max-[560px]:border max-[560px]:border-border max-[560px]:bg-soft max-[560px]:p-[.9rem_1rem] max-[560px]:text-center max-[560px]:text-base"
         />
         <button
           type="submit"
@@ -100,7 +116,7 @@ function RoleSearch({ service, placeholder, submitLabel, hint }: RoleSearch) {
           <Icon name="arrow-right" strokeWidth={2.2} className="h-[18px] w-[18px]" />
         </button>
       </form>
-      <p className="mt-[1.1rem] flex flex-wrap items-center justify-center gap-[.55rem] text-[.85rem] text-white/60">
+      <p className="mt-[1.1rem] flex flex-wrap items-center justify-center gap-[.55rem] text-[.85rem] text-charcoal/70">
         {hint}
       </p>
     </>

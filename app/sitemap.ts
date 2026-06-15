@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
+import { SERVICES } from "@/lib/content/services";
 
-// Only routes that currently exist as pages. Add new service pages here as
-// they ship so crawlers don't index 404s.
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   return [
@@ -12,11 +11,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
-    {
-      url: `${SITE_URL}/eor`,
+    ...SERVICES.map((s) => ({
+      url: `${SITE_URL}${s.href}`,
       lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
+      changeFrequency: "monthly" as const,
+      priority: s.hasContent ? 0.8 : 0.5,
+    })),
   ];
 }

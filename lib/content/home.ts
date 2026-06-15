@@ -71,10 +71,15 @@ export const navLinks = [
 
 export const hero = {
   eyebrow: "Workforce Solutions · Philippines",
-  headlinePre:
-    "Philippine-wide hiring, employment, and workforce support for ",
-  headlineEm: "growing companies",
-  headlinePost: ".",
+  // Headline as segments so the gold emphasis can fall on the core services
+  // ("Philippine-wide hiring", "workforce support") rather than the audience.
+  // The concatenated text is unchanged from the source copy.
+  headline: [
+    { text: "Philippine-wide hiring", em: true },
+    { text: ", employment, and " },
+    { text: "workforce support", em: true },
+    { text: " for growing companies." },
+  ] as { text: string; em?: boolean }[],
   lead: "We help you find, verify, and employ trusted talent through Employer of Record, Executive Search, and Background Investigation services, supported by nationwide operations, compliance-first employment processes, and our own HRIS, payroll, and accounting systems.",
   primaryCta: { label: "Book Consultation", href: "#contact" },
   secondaryCta: { label: "Explore Services", href: "#services" },

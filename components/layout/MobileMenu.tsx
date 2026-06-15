@@ -24,7 +24,11 @@ export function MobileMenu({
     };
   }, [open]);
 
-  const items = [{ label: "Services", href: servicesHref }, ...links];
+  const items = [
+    { label: "Home", href: "/" },
+    { label: "Services", href: servicesHref },
+    ...links,
+  ];
 
   return (
     <div

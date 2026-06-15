@@ -113,8 +113,31 @@
     background-repeat: no-repeat;
     background-attachment: fixed, fixed, fixed;
   }
+  /* Subpage hero — light "day" counterpart to the dark "night" homepage hero,
+     so the two stay visually distinct. A warm cream wash keeps the photo
+     visible while dark text stays readable. */
+  .hero-skyline-sub {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(251, 244, 226, 0.58) 48%,
+        rgba(251, 244, 226, 0.82) 100%
+      ),
+      radial-gradient(
+        100% 85% at 50% 14%,
+        rgba(217, 164, 55, 0.22) 0%,
+        rgba(217, 164, 55, 0) 58%
+      ),
+      url("/assets/portsl.jpg");
+    background-size: cover, cover, cover;
+    background-position: center, center, center 70%;
+    background-repeat: no-repeat;
+    background-attachment: fixed, fixed, fixed;
+  }
   @media (max-width: 860px) {
-    .hero-skyline {
+    .hero-skyline,
+    .hero-skyline-sub {
       background-attachment: scroll, scroll, scroll;
     }
   }

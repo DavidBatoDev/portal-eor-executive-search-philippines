@@ -14,19 +14,20 @@ const HOME: NavConfig = {
   servicesHref: "#services",
 };
 
+// Subpages link the middle items back to the homepage sections.
+const SUBPAGE: NavConfig = {
+  links: [
+    { label: "How It Works", href: "/#advantage" },
+    { label: "Who We Help", href: "/#who" },
+    { label: "Resources", href: "/#faq" },
+  ],
+  servicesHref: "/#services",
+};
+
 export const NAV_BY_PATH: Record<string, NavConfig> = {
   "/": HOME,
-  "/eor": {
-    links: [
-      { label: "How EOR Works", href: "#process", sec: "process" },
-      { label: "Who It's For", href: "#who", sec: "who" },
-      { label: "FAQ", href: "#faq", sec: "faq" },
-    ],
-    servicesHref: "/#services",
-  },
 };
 
 export function navFor(pathname: string): NavConfig {
-  // Service pages link back to the homepage services section.
-  return NAV_BY_PATH[pathname] ?? { ...HOME, servicesHref: "/#services" };
+  return NAV_BY_PATH[pathname] ?? SUBPAGE;
 }

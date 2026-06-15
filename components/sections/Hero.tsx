@@ -22,9 +22,15 @@ export function Hero() {
         <div>
           <Eyebrow tone="soft">{hero.eyebrow}</Eyebrow>
           <h1 className="mt-[1.2rem] max-w-[26ch] text-[clamp(1.85rem,1.3rem+1.6vw,2.6rem)] leading-[1.1] tracking-[-0.018em]">
-            {hero.headlinePre}
-            <em className="not-italic text-gold">{hero.headlineEm}</em>
-            {hero.headlinePost}
+            {hero.headline.map((seg, i) =>
+              seg.em ? (
+                <em key={i} className="not-italic text-gold">
+                  {seg.text}
+                </em>
+              ) : (
+                <span key={i}>{seg.text}</span>
+              )
+            )}
           </h1>
           <p className="lead mt-[1.15rem] max-w-[520px] text-[1.02rem] leading-[1.6]">{hero.lead}</p>
 
@@ -56,32 +62,22 @@ export function Hero() {
           <p className="flex items-center gap-[.55rem] px-[.35rem] pb-3 pt-[.2rem] font-body text-[.72rem] font-semibold uppercase tracking-[.14em] text-gold-soft before:h-[2px] before:w-[22px] before:flex-none before:bg-gold before:content-['']">
             {hero.previewLabel}
           </p>
-          <div className="flex flex-col">
+          <div className="grid grid-cols-2 gap-[.5rem]">
             {services.map((s, i) => (
               <Link
                 key={s.href}
                 href={s.href}
                 className={cx(
-                  "group relative flex items-center gap-3 rounded-[12px] p-[.6rem_.5rem] transition-colors hover:bg-gold/[.08]",
-                  i > 0 && "border-t border-white/[.07]"
+                  "group flex items-center gap-[.6rem] rounded-[11px] border border-white/[.08] bg-white/[.03] p-[.6rem_.7rem] transition-colors hover:border-gold/30 hover:bg-gold/[.08]",
+                  i === services.length - 1 && "col-span-2"
                 )}
               >
-                <span className="grid h-9 w-9 flex-none place-items-center rounded-[10px] border border-gold/[.24] bg-gold/[.13] text-gold-soft">
-                  <Icon name={s.icon} className="h-[18px] w-[18px]" />
+                <span className="grid h-8 w-8 flex-none place-items-center rounded-[9px] border border-gold/[.24] bg-gold/[.13] text-gold-soft">
+                  <Icon name={s.icon} className="h-[16px] w-[16px]" />
                 </span>
-                <span className="min-w-0">
-                  <span className="block font-head text-[.95rem] tracking-[-0.01em] text-white">
-                    {s.title}
-                  </span>
-                  <span className="mt-[.05rem] block text-[.8rem] leading-[1.35] text-white/60">
-                    {s.blurb}
-                  </span>
+                <span className="min-w-0 font-head text-[.88rem] font-medium leading-[1.2] tracking-[-0.01em] text-white">
+                  {s.title}
                 </span>
-                <Icon
-                  name="arrow-right"
-                  strokeWidth={2.2}
-                  className="ml-auto h-4 w-4 flex-none text-white/35 transition-[transform,color] duration-200 group-hover:translate-x-[3px] group-hover:text-gold"
-                />
               </Link>
             ))}
           </div>
