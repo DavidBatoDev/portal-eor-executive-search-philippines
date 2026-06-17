@@ -22,9 +22,15 @@ export function Hero() {
         <div>
           <Eyebrow tone="soft">{hero.eyebrow}</Eyebrow>
           <h1 className="mt-[1.2rem] max-w-[26ch] text-[clamp(1.85rem,1.3rem+1.6vw,2.6rem)] leading-[1.1] tracking-[-0.018em]">
-            {hero.headlinePre}
-            <em className="not-italic text-gold">{hero.headlineEm}</em>
-            {hero.headlinePost}
+            {hero.headline.map((seg, i) =>
+              seg.em ? (
+                <em key={i} className="not-italic text-gold">
+                  {seg.text}
+                </em>
+              ) : (
+                <span key={i}>{seg.text}</span>
+              )
+            )}
           </h1>
           <p className="lead mt-[1.15rem] max-w-130 text-[1.02rem] leading-[1.6]">{hero.lead}</p>
 
