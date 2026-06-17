@@ -29,7 +29,7 @@ export function ServiceGrid() {
               delay={((i % 3) + 1) as 1 | 2 | 3}
               className="group relative flex h-full flex-col overflow-hidden rounded border border-border bg-white p-8 shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-[#dfe2e7] hover:shadow-lg"
             >
-              <span className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gold transition-transform duration-[350ms] group-hover:scale-x-100" />
+              <span className="absolute inset-x-0 top-0 h-0.75 origin-left scale-x-0 bg-gold transition-transform duration-350 group-hover:scale-x-100" />
               <IconFrame tone="navy" className="mb-6">
                 <Icon name={c.icon} />
               </IconFrame>

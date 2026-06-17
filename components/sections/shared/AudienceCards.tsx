@@ -36,14 +36,14 @@ export function AudienceCards({
               as="article"
               key={c.title}
               delay={((i % 3) + 1) as 1 | 2 | 3}
-              className="flex items-start gap-4 rounded border border-border bg-white p-6 shadow-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:shadow"
+              className="flex items-start gap-4 rounded border border-border bg-white p-6 shadow-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-0.75 hover:shadow"
             >
               <span className="grid h-11 w-11 flex-none place-items-center rounded-[11px] bg-navy text-gold">
-                <Icon name={c.icon} className="h-[21px] w-[21px]" />
+                <Icon name={c.icon} className="h-5.25 w-5.25" />
               </span>
               <div>
                 <h4 className="mb-[.3rem] text-[1.02rem]">{c.title}</h4>
-                <p className="text-[.9rem] leading-[1.5]">{c.body}</p>
+                <p className="text-[.9rem] leading-normal">{c.body}</p>
               </div>
             </Reveal>
           ))}

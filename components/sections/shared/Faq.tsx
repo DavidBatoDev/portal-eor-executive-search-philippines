@@ -31,7 +31,7 @@ export function Faq({
           <SectionHead center eyebrow={eyebrow} heading={heading} lead={lead} />
         </Reveal>
 
-        <div className="mx-auto mt-10 max-w-[820px]">
+        <div className="mx-auto mt-10 max-w-205">
           {items.map((item, i) => {
             const isOpen = open === i;
             return (
@@ -45,15 +45,15 @@ export function Faq({
                   <span>{item.q}</span>
                   <span
                     className={cx(
-                      "relative grid h-[26px] w-[26px] flex-none place-items-center rounded-[7px] transition-colors duration-200",
+                      "relative grid h-6.5 w-6.5 flex-none place-items-center rounded-[7px] transition-colors duration-200",
                       isOpen ? "bg-navy" : "bg-gold-tint"
                     )}
                     aria-hidden="true"
                   >
-                    <span className={cx("absolute h-[2px] w-[11px]", isOpen ? "bg-gold" : "bg-gold-deep")} />
+                    <span className={cx("absolute h-0.5 w-2.75", isOpen ? "bg-gold" : "bg-gold-deep")} />
                     <span
                       className={cx(
-                        "absolute h-[11px] w-[2px] transition-transform duration-200",
+                        "absolute h-2.75 w-0.5 transition-transform duration-200",
                         isOpen ? "scale-y-0 bg-gold" : "bg-gold-deep"
                       )}
                     />

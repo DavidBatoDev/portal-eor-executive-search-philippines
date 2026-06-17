@@ -36,21 +36,21 @@ export function Footer() {
     <footer className="bg-navy-900 pt-[clamp(3.5rem,5vw,5rem)] text-white/60">
       <Container>
         <div className="grid grid-cols-1 gap-10 pb-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
-          <div className="max-w-[320px] md:col-span-2 lg:col-span-1">
+          <div className="max-w-80 md:col-span-2 lg:col-span-1">
             <Logo onDark />
             <p className="mt-[1.2rem] text-[.95rem] leading-[1.7]">{footer.about}</p>
 
             <div className="mt-[1.4rem] flex flex-col gap-[.6rem] text-[.92rem]">
               <a href={`mailto:${footer.email}`} className="flex items-center gap-[.6rem]">
-                <Icon name="mail" strokeWidth={1.7} className="h-[17px] w-[17px] flex-none text-gold" />
+                <Icon name="mail" strokeWidth={1.7} className="h-4.25 w-4.25 flex-none text-gold" />
                 {footer.email}
               </a>
               <a href={footer.phoneHref} className="flex items-center gap-[.6rem]">
-                <Icon name="phone" strokeWidth={1.7} className="h-[17px] w-[17px] flex-none text-gold" />
+                <Icon name="phone" strokeWidth={1.7} className="h-4.25 w-4.25 flex-none text-gold" />
                 {footer.phoneDisplay}
               </a>
               <span className="flex items-start gap-[.6rem]">
-                <Icon name="map-pin" strokeWidth={1.7} className="mt-[2px] h-[17px] w-[17px] flex-none text-gold" />
+                <Icon name="map-pin" strokeWidth={1.7} className="mt-0.5 h-4.25 w-4.25 flex-none text-gold" />
                 <span>{footer.location}</span>
               </span>
             </div>
@@ -61,9 +61,9 @@ export function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="grid h-[38px] w-[38px] flex-none place-items-center rounded-full border border-white/[.16] text-white/75 transition-[color,border-color,background-color,transform] duration-200 hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-navy"
+                  className="grid h-9.5 w-9.5 flex-none place-items-center rounded-full border border-white/16 text-white/75 transition-[color,border-color,background-color,transform] duration-200 hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-navy"
                 >
-                  <SvgIcon className="h-[17px] w-[17px]" />
+                  <SvgIcon className="h-4.25 w-4.25" />
                 </a>
               ))}
             </div>

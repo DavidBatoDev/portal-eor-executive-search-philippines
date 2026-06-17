@@ -23,7 +23,7 @@ export function IconFrame({
   return (
     <span
       className={cx(
-        "grid h-[58px] w-[58px] flex-none place-items-center rounded-[14px] border [&>svg]:h-[27px] [&>svg]:w-[27px]",
+        "grid h-14.5 w-14.5 flex-none place-items-center rounded-[14px] border [&>svg]:h-6.75 [&>svg]:w-6.75",
         TONES[tone],
         className
       )}

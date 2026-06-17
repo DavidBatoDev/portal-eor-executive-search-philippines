@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { cx } from "@/lib/cx";
 
 const Line = () => (
-  <span className="inline-block h-[2px] w-[26px] flex-none bg-gold" />
+  <span className="inline-block h-0.5 w-6.5 flex-none bg-gold" />
 );
 
 /**

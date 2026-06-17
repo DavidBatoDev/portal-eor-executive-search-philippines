@@ -9,7 +9,7 @@ const VARIANTS: Record<Variant, string> = {
   primary:
     "bg-gold text-navy shadow-gold hover:bg-gold-soft hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(217,164,55,.36)]",
   "ghost-dark":
-    "bg-transparent text-white border-white/[.28] hover:border-gold hover:text-gold hover:-translate-y-0.5",
+    "bg-transparent text-white border-white/28 hover:border-gold hover:text-gold hover:-translate-y-0.5",
   "ghost-light":
     "bg-transparent text-navy border-navy hover:bg-navy hover:text-white hover:-translate-y-0.5",
   "outline-gold":
@@ -43,7 +43,7 @@ export function Button({
   const content = (
     <>
       {children}
-      {arrow && <Icon name="arrow-right" strokeWidth={2.2} className="h-[18px] w-[18px]" />}
+      {arrow && <Icon name="arrow-right" strokeWidth={2.2} className="h-4.5 w-4.5" />}
     </>
   );
   if (href.startsWith("/")) {

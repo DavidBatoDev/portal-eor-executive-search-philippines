@@ -18,7 +18,7 @@ export function Team() {
             <Reveal
               key={m.name}
               delay={i === 0 ? undefined : ((i % 4) as 1 | 2 | 3)}
-              className="rounded-lg border border-border bg-white p-[1.6rem_1.4rem_1.7rem] text-center shadow-sm transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-[3px] hover:border-gold hover:shadow"
+              className="rounded-lg border border-border bg-white p-[1.6rem_1.4rem_1.7rem] text-center shadow-sm transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.75 hover:border-gold hover:shadow"
             >
               <Image
                 src={m.photo}
@@ -30,7 +30,7 @@ export function Team() {
               <p className="font-head text-[1.08rem] font-extrabold tracking-[-0.01em] text-navy">
                 {m.name}
               </p>
-              <span className="mx-auto my-[.7rem] block h-[2px] w-[30px] rounded-[2px] bg-gold" />
+              <span className="mx-auto my-[.7rem] block h-0.5 w-7.5 rounded-xs bg-gold" />
               <p className="font-body text-[.86rem] font-medium uppercase tracking-[.04em] text-body">
                 {m.role}
               </p>

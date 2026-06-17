@@ -25,10 +25,10 @@ export function FinalCta({
       <RingWatermark
         circles={[24, 44, 64, 84, 99]}
         dot={10}
-        className="right-[-8%] top-1/2 h-[560px] w-[560px] -translate-y-1/2 opacity-[0.07]"
+        className="right-[-8%] top-1/2 h-140 w-140 -translate-y-1/2 opacity-[0.07]"
       />
-      <Container className="relative z-[2]">
-        <Reveal className="mx-auto max-w-[720px] text-center">
+      <Container className="relative z-2">
+        <Reveal className="mx-auto max-w-180 text-center">
           <Eyebrow center tone="soft">
             {eyebrow}
           </Eyebrow>

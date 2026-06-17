@@ -12,9 +12,9 @@ export function Journey() {
     <Section id="advantage" bg="navy" dark className="overflow-hidden">
       <RingWatermark
         circles={[22, 40, 58, 76, 94]}
-        className="bottom-[-30%] left-[-10%] h-[680px] w-[680px] opacity-[0.07]"
+        className="bottom-[-30%] left-[-10%] h-170 w-170 opacity-[0.07]"
       />
-      <Container className="relative z-[2]">
+      <Container className="relative z-2">
         <Reveal>
           <SectionHead
             eyebrow={advantage.eyebrow}
@@ -34,7 +34,7 @@ export function Journey() {
                 className="px-[1.6rem]"
               >
                 <div className="mb-[1.1rem] flex items-center gap-[.9rem]">
-                  <span className="relative grid h-[54px] w-[54px] flex-none place-items-center">
+                  <span className="relative grid h-13.5 w-13.5 flex-none place-items-center">
                     <svg viewBox="0 0 54 54" fill="none" aria-hidden="true" className="absolute inset-0 h-full w-full">
                       <circle cx="27" cy="27" r="25" stroke="rgba(217,164,55,.3)" strokeWidth="1.5" />
                       <circle cx="27" cy="27" r="17" stroke="rgba(217,164,55,.5)" strokeWidth="1.5" />
@@ -43,10 +43,10 @@ export function Journey() {
                       {step.n}
                     </span>
                   </span>
-                  <span className="relative h-px flex-1 bg-white/[.16]">
+                  <span className="relative h-px flex-1 bg-white/16">
                     <span
                       className={cx(
-                        "absolute right-0 top-[-3px] h-[7px] w-[7px] rounded-full",
+                        "absolute right-0 -top-0.75 h-1.75 w-1.75 rounded-full",
                         isLast
                           ? "bg-gold-soft shadow-[0_0_0_4px_rgba(217,164,55,.18)]"
                           : "bg-gold"
@@ -55,7 +55,7 @@ export function Journey() {
                   </span>
                 </div>
                 <h3 className="mb-[.55rem] text-[1.32rem] text-white">{step.title}</h3>
-                <p className="text-[.92rem] leading-[1.55] text-white/[.66]">{step.body}</p>
+                <p className="text-[.92rem] leading-[1.55] text-white/66">{step.body}</p>
               </Reveal>
             );
           })}

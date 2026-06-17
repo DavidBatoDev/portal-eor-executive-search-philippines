@@ -60,7 +60,7 @@ export function ChatWidget() {
         aria-label={open ? "Close chat" : "Open chat"}
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className="fixed bottom-5 right-5 z-[110] grid h-14 w-14 place-items-center rounded-full bg-gold text-navy shadow-gold transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105 motion-reduce:transition-none"
+        className="fixed bottom-5 right-5 z-110 grid h-14 w-14 place-items-center rounded-full bg-gold text-navy shadow-gold transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105 motion-reduce:transition-none"
       >
         <Icon
           name="chat"
@@ -86,7 +86,7 @@ export function ChatWidget() {
           aria-hidden={!open}
           inert={!open || undefined}
           className={cx(
-            "fixed bottom-24 right-5 z-[110] flex h-[min(70vh,560px)] w-[min(92vw,400px)] origin-bottom-right flex-col overflow-hidden rounded-lg border border-border bg-white shadow-lg transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none motion-reduce:duration-0",
+            "fixed bottom-24 right-5 z-110 flex h-[min(70vh,560px)] w-[min(92vw,400px)] origin-bottom-right flex-col overflow-hidden rounded-lg border border-border bg-white shadow-lg transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none motion-reduce:duration-0",
             open
               ? "translate-y-0 scale-100 opacity-100"
               : "pointer-events-none translate-y-3 scale-95 opacity-0"
@@ -107,7 +107,7 @@ export function ChatWidget() {
               aria-label="Close chat"
               className="grid h-8 w-8 place-items-center rounded-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
             >
-              <Icon name="close" strokeWidth={2} className="h-[18px] w-[18px]" />
+              <Icon name="close" strokeWidth={2} className="h-4.5 w-4.5" />
             </button>
           </div>
 

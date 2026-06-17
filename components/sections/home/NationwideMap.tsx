@@ -30,11 +30,11 @@ export function NationwideMap() {
               <div className="flex flex-wrap items-center gap-x-[.15rem] gap-y-[.2rem]">
                 {nationwide.cities.map((c, i) => (
                   <Fragment key={c.pin}>
-                    <span className="cursor-default whitespace-nowrap rounded-[7px] px-[.5rem] py-[.25rem] font-head text-[.95rem] font-bold text-charcoal transition-colors hover:bg-gold-tint hover:text-gold-deep">
+                    <span className="cursor-default whitespace-nowrap rounded-[7px] px-2 py-1 font-head text-[.95rem] font-bold text-charcoal transition-colors hover:bg-gold-tint hover:text-gold-deep">
                       {c.name}
                     </span>
                     {i < nationwide.cities.length - 1 && (
-                      <span className="relative top-[-1px] text-[.8em] text-gold">•</span>
+                      <span className="relative -top-0.25 text-[.8em] text-gold">•</span>
                     )}
                   </Fragment>
                 ))}

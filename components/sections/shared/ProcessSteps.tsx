@@ -31,9 +31,9 @@ export function ProcessSteps({
       <RingWatermark
         circles={ringCircles}
         dot={ringDot}
-        className="left-1/2 top-1/2 h-[640px] w-[640px] -translate-x-1/2 -translate-y-1/2 opacity-[0.07]"
+        className="left-1/2 top-1/2 h-160 w-160 -translate-x-1/2 -translate-y-1/2 opacity-[0.07]"
       />
-      <Container className="relative z-[2]">
+      <Container className="relative z-2">
         <Reveal>
           <SectionHead eyebrow={eyebrow} eyebrowTone="soft" heading={heading} lead={lead} />
         </Reveal>
@@ -44,17 +44,17 @@ export function ProcessSteps({
             return (
               <Reveal key={step.n} delay={(i + 1) as 1 | 2 | 3 | 4} className="px-[1.6rem]">
                 <div className="mb-[1.1rem] flex items-center gap-[.9rem]">
-                  <span className="relative grid h-[54px] w-[54px] flex-none place-items-center">
+                  <span className="relative grid h-13.5 w-13.5 flex-none place-items-center">
                     <svg viewBox="0 0 54 54" fill="none" aria-hidden="true" className="absolute inset-0 h-full w-full">
                       <circle cx="27" cy="27" r="25" stroke="currentColor" strokeWidth="1.5" opacity=".3" />
                       <circle cx="27" cy="27" r="17" stroke="currentColor" strokeWidth="1.5" opacity=".55" />
                     </svg>
                     <span className="font-head text-[1.05rem] font-extrabold text-gold">{step.n}</span>
                   </span>
-                  <span className="relative h-px flex-1 bg-white/[.16]">
+                  <span className="relative h-px flex-1 bg-white/16">
                     <span
                       className={cx(
-                        "absolute right-0 top-[-3px] h-[7px] w-[7px] rounded-full",
+                        "absolute right-0 -top-0.75 h-1.75 w-1.75 rounded-full",
                         isLast
                           ? "bg-gold-soft shadow-[0_0_0_4px_rgba(217,164,55,.18)]"
                           : "bg-gold"
@@ -63,7 +63,7 @@ export function ProcessSteps({
                   </span>
                 </div>
                 <h3 className="mb-[.55rem] text-[1.32rem] text-white">{step.title}</h3>
-                <p className="text-[.92rem] leading-[1.55] text-white/[.66]">{step.body}</p>
+                <p className="text-[.92rem] leading-[1.55] text-white/66">{step.body}</p>
               </Reveal>
             );
           })}

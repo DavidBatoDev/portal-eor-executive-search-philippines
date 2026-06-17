@@ -29,11 +29,11 @@ export function MobileMenu({
   return (
     <div
       className={cx(
-        "fixed inset-0 z-[200] flex flex-col overflow-y-auto bg-navy px-[clamp(20px,5vw,40px)] pb-10 pt-6 transition-transform duration-[400ms] ease-[cubic-bezier(.4,0,.2,1)]",
+        "fixed inset-0 z-200 flex flex-col overflow-y-auto bg-navy px-[clamp(20px,5vw,40px)] pb-10 pt-6 transition-transform duration-400 ease-[cubic-bezier(.4,0,.2,1)]",
         open ? "translate-y-0" : "-translate-y-full"
       )}
     >
-      <div className="flex h-[78px] items-center justify-between">
+      <div className="flex h-19.5 items-center justify-between">
         <Logo onDark />
         <button
           type="button"
@@ -50,7 +50,7 @@ export function MobileMenu({
             key={l.label}
             href={l.href}
             onClick={onClose}
-            className="border-b border-white/[.08] py-[.7rem] font-head text-2xl font-bold tracking-[-0.01em] text-white"
+            className="border-b border-white/8 py-[.7rem] font-head text-2xl font-bold tracking-[-0.01em] text-white"
           >
             {l.label}
           </a>

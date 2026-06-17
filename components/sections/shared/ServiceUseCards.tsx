@@ -50,10 +50,10 @@ export function ServiceUseCards({
               as="article"
               key={c.title}
               delay={((i % 3) + 1) as 1 | 2 | 3}
-              className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-white p-[2rem_1.8rem] shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[5px] hover:border-[#dfe2e7] hover:shadow-lg"
+              className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-white p-[2rem_1.8rem] shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1.25 hover:border-[#dfe2e7] hover:shadow-lg"
             >
-              <span className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gold transition-transform duration-[350ms] group-hover:scale-x-100" />
-              <span className="mb-[1.3rem] grid h-14 w-14 flex-none place-items-center rounded-[14px] bg-navy text-gold [&>svg]:h-[26px] [&>svg]:w-[26px]">
+              <span className="absolute inset-x-0 top-0 h-0.75 origin-left scale-x-0 bg-gold transition-transform duration-350 group-hover:scale-x-100" />
+              <span className="mb-[1.3rem] grid h-14 w-14 flex-none place-items-center rounded-[14px] bg-navy text-gold [&>svg]:h-6.5 [&>svg]:w-6.5">
                 <Icon name={c.icon} />
               </span>
               <h3 className="mb-[.6rem] text-[1.18rem]">{c.title}</h3>
@@ -70,11 +70,11 @@ export function ServiceUseCards({
             delay={3}
             className="edge-gold relative flex flex-col overflow-hidden rounded-lg border border-navy bg-[linear-gradient(155deg,#16223c,#101828)] p-[2rem_1.8rem] shadow-sm transition-colors duration-200 hover:border-gold"
           >
-            <span className="mb-[1.3rem] grid h-14 w-14 flex-none place-items-center rounded-[14px] bg-gold/[.14] text-gold-soft [&>svg]:h-[26px] [&>svg]:w-[26px]">
+            <span className="mb-[1.3rem] grid h-14 w-14 flex-none place-items-center rounded-[14px] bg-gold/14 text-gold-soft [&>svg]:h-6.5 [&>svg]:w-6.5">
               <Icon name={ctaCard.icon} />
             </span>
             <h3 className="mb-[.6rem] text-[1.18rem] text-white">{ctaCard.title}</h3>
-            <p className="text-[.96rem] leading-[1.6] text-white/[.72]">{ctaCard.body}</p>
+            <p className="text-[.96rem] leading-[1.6] text-white/72">{ctaCard.body}</p>
             <LinkArrow href={ctaCard.link.href} className="mt-[1.3rem] text-gold-soft">
               {ctaCard.link.label}
             </LinkArrow>

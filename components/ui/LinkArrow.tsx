@@ -16,7 +16,7 @@ export function LinkArrow({
     <Link
       href={href}
       className={cx(
-        "group inline-flex items-center gap-[.5rem] font-head text-[.95rem] font-bold tracking-[-0.01em] text-gold-deep",
+        "group inline-flex items-center gap-2 font-head text-[.95rem] font-bold tracking-[-0.01em] text-gold-deep",
         className
       )}
     >

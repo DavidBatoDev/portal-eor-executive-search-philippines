@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { ServiceHero } from "@/components/sections/ServiceHero";
-import { PainPoints } from "@/components/sections/PainPoints";
-import { ServiceUseCards } from "@/components/sections/ServiceUseCards";
-import { ProcessSteps } from "@/components/sections/ProcessSteps";
-import { AudienceCards } from "@/components/sections/AudienceCards";
-import { HiresMarquee } from "@/components/sections/HiresMarquee";
-import { Faq } from "@/components/sections/Faq";
-import { FinalCta } from "@/components/sections/FinalCta";
+import { ServiceHero } from "@/components/sections/shared/ServiceHero";
+import { PainPoints } from "@/components/sections/eor/PainPoints";
+import { ServiceUseCards } from "@/components/sections/shared/ServiceUseCards";
+import { ProcessSteps } from "@/components/sections/shared/ProcessSteps";
+import { AudienceCards } from "@/components/sections/shared/AudienceCards";
+import { HiresMarquee } from "@/components/sections/shared/HiresMarquee";
+import { Faq } from "@/components/sections/shared/Faq";
+import { FinalCta } from "@/components/sections/shared/FinalCta";
 import {
   meta,
   hero,

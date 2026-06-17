@@ -15,10 +15,10 @@ export function Hero() {
     >
       <RingWatermark
         circles={[22, 38, 54, 70, 86, 99]}
-        className="right-[-12%] top-[-18%] h-[780px] w-[780px] opacity-[0.07]"
+        className="right-[-12%] top-[-18%] h-195 w-195 opacity-[0.07]"
       />
 
-      <Container className="relative z-[2] grid items-center gap-[clamp(2.5rem,4.5vw,5rem)] lg:grid-cols-[1.04fr_.96fr]">
+      <Container className="relative z-2 grid items-center gap-[clamp(2.5rem,4.5vw,5rem)] lg:grid-cols-[1.04fr_.96fr]">
         <div>
           <Eyebrow tone="soft">{hero.eyebrow}</Eyebrow>
           <h1 className="mt-[1.2rem] max-w-[26ch] text-[clamp(1.85rem,1.3rem+1.6vw,2.6rem)] leading-[1.1] tracking-[-0.018em]">
@@ -26,7 +26,7 @@ export function Hero() {
             <em className="not-italic text-gold">{hero.headlineEm}</em>
             {hero.headlinePost}
           </h1>
-          <p className="lead mt-[1.15rem] max-w-[520px] text-[1.02rem] leading-[1.6]">{hero.lead}</p>
+          <p className="lead mt-[1.15rem] max-w-130 text-[1.02rem] leading-[1.6]">{hero.lead}</p>
 
           <div className="mt-7 flex flex-wrap gap-4">
             <Button href={hero.primaryCta.href} variant="primary" arrow>
@@ -37,13 +37,13 @@ export function Hero() {
             </Button>
           </div>
 
-          <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/[.12] pt-5">
+          <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/12 pt-5">
             {hero.tags.map((t) => (
               <span
                 key={t.label}
-                className="flex items-center gap-2 whitespace-nowrap font-head text-[.72rem] font-bold uppercase tracking-[.03em] text-white/[.82]"
+                className="flex items-center gap-2 whitespace-nowrap font-head text-[.72rem] font-bold uppercase tracking-[.03em] text-white/82"
               >
-                <Icon name={t.icon} strokeWidth={1.8} className="h-[15px] w-[15px] flex-none text-gold" />
+                <Icon name={t.icon} strokeWidth={1.8} className="h-3.75 w-3.75 flex-none text-gold" />
                 {t.label}
               </span>
             ))}
@@ -52,8 +52,8 @@ export function Hero() {
 
         {/* Service preview panel — hidden below lg; the same services appear in
             the nav dropdown and the ServiceGrid section directly below. */}
-        <div className="edge-gold relative hidden rounded-lg border border-white/10 bg-white/[.04] p-5 shadow-[0_24px_60px_rgba(0,0,0,.28)] backdrop-blur-[8px] lg:block">
-          <p className="flex items-center gap-[.55rem] px-[.35rem] pb-3 pt-[.2rem] font-body text-[.72rem] font-semibold uppercase tracking-[.14em] text-gold-soft before:h-[2px] before:w-[22px] before:flex-none before:bg-gold before:content-['']">
+        <div className="edge-gold relative hidden rounded-lg border border-white/10 bg-white/4 p-5 shadow-[0_24px_60px_rgba(0,0,0,.28)] backdrop-blur-sm lg:block">
+          <p className="flex items-center gap-[.55rem] px-[.35rem] pb-3 pt-[.2rem] font-body text-[.72rem] font-semibold uppercase tracking-[.14em] text-gold-soft before:h-0.5 before:w-5.5 before:flex-none before:bg-gold before:content-['']">
             {hero.previewLabel}
           </p>
           <div className="flex flex-col">
@@ -62,12 +62,12 @@ export function Hero() {
                 key={s.href}
                 href={s.href}
                 className={cx(
-                  "group relative flex items-center gap-3 rounded-[12px] p-[.6rem_.5rem] transition-colors hover:bg-gold/[.08]",
-                  i > 0 && "border-t border-white/[.07]"
+                  "group relative flex items-center gap-3 rounded-xl p-[.6rem_.5rem] transition-colors hover:bg-gold/8",
+                  i > 0 && "border-t border-white/7"
                 )}
               >
-                <span className="grid h-9 w-9 flex-none place-items-center rounded-[10px] border border-gold/[.24] bg-gold/[.13] text-gold-soft">
-                  <Icon name={s.icon} className="h-[18px] w-[18px]" />
+                <span className="grid h-9 w-9 flex-none place-items-center rounded-sm border border-gold/24 bg-gold/13 text-gold-soft">
+                  <Icon name={s.icon} className="h-4.5 w-4.5" />
                 </span>
                 <span className="min-w-0">
                   <span className="block font-head text-[.95rem] tracking-[-0.01em] text-white">
@@ -80,7 +80,7 @@ export function Hero() {
                 <Icon
                   name="arrow-right"
                   strokeWidth={2.2}
-                  className="ml-auto h-4 w-4 flex-none text-white/35 transition-[transform,color] duration-200 group-hover:translate-x-[3px] group-hover:text-gold"
+                  className="ml-auto h-4 w-4 flex-none text-white/35 transition-[transform,color] duration-200 group-hover:translate-x-0.75 group-hover:text-gold"
                 />
               </Link>
             ))}
@@ -91,7 +91,7 @@ export function Hero() {
       {/* bottom blend into the navy marquee that follows */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[140px] bg-gradient-to-b from-transparent to-navy-900"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-1 h-35 bg-gradient-to-b from-transparent to-navy-900"
       />
     </section>
   );

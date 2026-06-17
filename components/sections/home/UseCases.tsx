@@ -19,12 +19,12 @@ function UseCaseItem({
         !isLast && "border-b border-border"
       )}
     >
-      <span className="w-[30px] flex-none pt-[.1rem] font-head text-[.92rem] font-extrabold text-gold-deep">
+      <span className="w-7.5 flex-none pt-[.1rem] font-head text-[.92rem] font-extrabold text-gold-deep">
         {item.n}
       </span>
       <div>
         <h4>{item.title}</h4>
-        <p className="mt-[.25rem] text-[.96rem]">{item.body}</p>
+        <p className="mt-1 text-[.96rem]">{item.body}</p>
       </div>
     </div>
   );
