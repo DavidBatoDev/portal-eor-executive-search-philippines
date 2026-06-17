@@ -30,7 +30,7 @@ export function Team() {
               <p className="font-head text-[1.08rem] font-extrabold tracking-[-0.01em] text-navy">
                 {m.name}
               </p>
-              <span className="mx-auto my-[.7rem] block h-[2px] w-[30px] rounded-[2px] bg-gold" />
+              <span className="mx-auto my-[.7rem] block h-0.5 w-[30px] rounded-[2px] bg-gold" />
               <p className="font-body text-[.86rem] font-medium uppercase tracking-[.04em] text-body">
                 {m.role}
               </p>

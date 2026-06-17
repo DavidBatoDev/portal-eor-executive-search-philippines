@@ -16,7 +16,7 @@ export function Challenge() {
         colorClass="text-navy"
         className="left-[-14%] top-1/2 h-[620px] w-[620px] -translate-y-1/2 opacity-[0.04]"
       />
-      <Container className="relative z-[1]">
+      <Container className="relative z-1">
         <div className="grid items-center gap-[clamp(2rem,4vw,4rem)] lg:grid-cols-[1.15fr_.85fr]">
           <Reveal className="space-y-6">
             <Eyebrow>{challenge.eyebrow}</Eyebrow>
@@ -39,20 +39,20 @@ export function Challenge() {
               dot={12}
               className="right-[-22%] top-[-30%] h-[320px] w-[320px] opacity-10"
             />
-            <span className="relative z-[1] mb-[1.1rem] inline-flex items-center gap-[.5rem] font-head text-[.72rem] font-bold uppercase tracking-[.12em] text-gold-soft">
+            <span className="relative z-1 mb-[1.1rem] inline-flex items-center gap-[.5rem] font-head text-[.72rem] font-bold uppercase tracking-[.12em] text-gold-soft">
               <Icon name="check-circle" strokeWidth={1.8} className="h-4 w-4 text-gold" />
               {challenge.calloutTag}
             </span>
-            <p className="relative z-[1] font-head text-[clamp(1.15rem,1rem+.7vw,1.45rem)] font-bold leading-[1.4] tracking-[-0.015em] text-white">
+            <p className="relative z-1 font-head text-[clamp(1.15rem,1rem+.7vw,1.45rem)] font-bold leading-[1.4] tracking-[-0.015em] text-white">
               {challenge.callout}
             </p>
-            <div className="relative z-[1] mt-[1.6rem] flex flex-col gap-[.6rem]">
+            <div className="relative z-1 mt-[1.6rem] flex flex-col gap-[.6rem]">
               {challenge.chips.map((chip) => (
                 <span
                   key={chip.label}
                   className="flex items-center gap-[.7rem] rounded-[11px] border border-gold/[.24] bg-gold/10 p-[.6rem_.9rem] font-head text-[.86rem] font-semibold text-gold-soft"
                 >
-                  <Icon name={chip.icon} strokeWidth={1.7} className="h-[18px] w-[18px] flex-none text-gold" />
+                  <Icon name={chip.icon} strokeWidth={1.7} className="h-4.5 w-4.5 flex-none text-gold" />
                   {chip.label}
                 </span>
               ))}

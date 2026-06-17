@@ -24,6 +24,14 @@ export const NAV_BY_PATH: Record<string, NavConfig> = {
     ],
     servicesHref: "/#services",
   },
+  "/manpower-solutions": {
+    links: [
+      { label: "How It Works", href: "#process", sec: "process" },
+      { label: "Who It's For", href: "#who", sec: "who" },
+      { label: "FAQ", href: "#faq", sec: "faq" },
+    ],
+    servicesHref: "/#services",
+  },
 };
 
 export function navFor(pathname: string): NavConfig {

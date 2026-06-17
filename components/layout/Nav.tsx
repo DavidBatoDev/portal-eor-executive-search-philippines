@@ -55,8 +55,8 @@ export function Nav() {
                 </button>
                 <div
                   className={cx(
-                    "invisible absolute left-1/2 top-[calc(100%+14px)] grid w-[640px] -translate-x-1/2 translate-y-2 grid-cols-2 gap-[.2rem] rounded-[14px] border border-border bg-white p-[.6rem] opacity-0 shadow-lg transition-[opacity,transform] duration-200",
-                    "before:absolute before:-top-[14px] before:left-0 before:right-0 before:h-[14px] before:content-['']",
+                    "invisible absolute left-1/2 top-[calc(100%+14px)] grid w-160 -translate-x-1/2 translate-y-2 grid-cols-2 gap-[.2rem] rounded-[14px] border border-border bg-white p-[.6rem] opacity-0 shadow-lg transition-[opacity,transform] duration-200",
+                    "before:absolute before:-top-[14px] before:left-0 before:right-0 before:h-3.5 before:content-['']",
                     "group-hover:visible group-hover:translate-y-0 group-hover:opacity-100",
                     "group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100",
                     "max-[1080px]:w-[520px]"
@@ -69,7 +69,7 @@ export function Nav() {
                       className="flex items-start gap-[.85rem] rounded-[10px] p-[.7rem_.8rem] transition-colors hover:bg-soft"
                     >
                       <span className="grid h-[38px] w-[38px] flex-none place-items-center rounded-[9px] border border-[#f0e3c4] bg-gold-tint text-gold-deep">
-                        <Icon name={s.icon} className="h-[19px] w-[19px]" />
+                        <Icon name={s.icon} className="h-4.75 w-4.75" />
                       </span>
                       <span>
                         <span className="block font-head text-[.96rem] font-bold tracking-[-0.01em] text-navy">
@@ -110,7 +110,7 @@ export function Nav() {
                 scrolled ? "text-navy" : "text-white"
               )}
             >
-              <span className="relative block h-[2px] w-6 bg-current before:absolute before:left-0 before:top-[-7px] before:h-[2px] before:w-6 before:bg-current before:content-[''] after:absolute after:left-0 after:top-[7px] after:h-[2px] after:w-6 after:bg-current after:content-['']" />
+              <span className="relative block h-0.5 w-6 bg-current before:absolute before:left-0 before:top-[-7px] before:h-0.5 before:w-6 before:bg-current before:content-[''] after:absolute after:left-0 after:top-[7px] after:h-0.5 after:w-6 after:bg-current after:content-['']" />
             </button>
           </div>
         </Container>

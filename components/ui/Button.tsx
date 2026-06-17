@@ -5,15 +5,19 @@ import { Icon } from "@/components/ui/Icon";
 
 type Variant = "primary" | "ghost-dark" | "ghost-light" | "outline-gold";
 
+// Hover styles key off a stable wrapper (`group/btn`) rather than the element
+// itself: the lift translates the inner element, but hover is detected on the
+// non-moving wrapper, so the cursor never falls out of the hover region at the
+// edge (which would otherwise cause a hover/un-hover jitter).
 const VARIANTS: Record<Variant, string> = {
   primary:
-    "bg-gold text-navy shadow-gold hover:bg-gold-soft hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(217,164,55,.36)]",
+    "bg-gold text-navy shadow-gold group-hover/btn:bg-gold-soft group-hover/btn:-translate-y-0.5 group-hover/btn:shadow-[0_16px_34px_rgba(217,164,55,.36)]",
   "ghost-dark":
-    "bg-transparent text-white border-white/[.28] hover:border-gold hover:text-gold hover:-translate-y-0.5",
+    "bg-transparent text-white border-white/[.28] group-hover/btn:border-gold group-hover/btn:text-gold group-hover/btn:-translate-y-0.5",
   "ghost-light":
-    "bg-transparent text-navy border-navy hover:bg-navy hover:text-white hover:-translate-y-0.5",
+    "bg-transparent text-navy border-navy group-hover/btn:bg-navy group-hover/btn:text-white group-hover/btn:-translate-y-0.5",
   "outline-gold":
-    "bg-transparent text-gold-deep border-gold hover:bg-gold hover:text-navy hover:-translate-y-0.5",
+    "bg-transparent text-gold-deep border-gold group-hover/btn:bg-gold group-hover/btn:text-navy group-hover/btn:-translate-y-0.5",
 };
 
 const BASE =
@@ -43,19 +47,17 @@ export function Button({
   const content = (
     <>
       {children}
-      {arrow && <Icon name="arrow-right" strokeWidth={2.2} className="h-[18px] w-[18px]" />}
+      {arrow && <Icon name="arrow-right" strokeWidth={2.2} className="h-4.5 w-4.5" />}
     </>
   );
-  if (href.startsWith("/")) {
-    return (
-      <Link href={href} className={classes}>
-        {content}
-      </Link>
-    );
-  }
-  return (
+  const inner = href.startsWith("/") ? (
+    <Link href={href} className={classes}>
+      {content}
+    </Link>
+  ) : (
     <a href={href} className={classes}>
       {content}
     </a>
   );
+  return <span className="group/btn inline-flex">{inner}</span>;
 }

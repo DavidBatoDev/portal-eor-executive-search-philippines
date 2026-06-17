@@ -32,7 +32,7 @@ export function PainPoints({
   return (
     <Section id={id} bg="white">
       <Container>
-        <Reveal className="max-w-[760px]">
+        <Reveal className="max-w-190">
           <Eyebrow className="mb-[1.1rem]">{eyebrow}</Eyebrow>
           <h2>{heading}</h2>
           <p className="mt-[1.2rem] max-w-[60ch] text-[1.08rem]">{intro}</p>
@@ -45,8 +45,8 @@ export function PainPoints({
                 key={item.title}
                 className="flex items-start gap-[1.1rem] rounded border border-border bg-white p-[1.3rem_1.4rem] shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:translate-x-[3px] hover:border-[#dfe2e7] hover:shadow"
               >
-                <span className="grid h-[46px] w-[46px] flex-none place-items-center rounded-[12px] border border-[#ecd9c7] bg-copper-tint text-copper">
-                  <Icon name={item.icon} strokeWidth={1.7} className="h-[22px] w-[22px]" />
+                <span className="grid h-[46px] w-[46px] flex-none place-items-center rounded-xl border border-[#ecd9c7] bg-copper-tint text-copper">
+                  <Icon name={item.icon} strokeWidth={1.7} className="h-5.5 w-5.5" />
                 </span>
                 <div>
                   <h4 className="mb-[.25rem] text-[1.04rem]">{item.title}</h4>
@@ -66,25 +66,25 @@ export function PainPoints({
               dot={12}
               className="right-[-22%] top-[-30%] h-[320px] w-[320px] opacity-10"
             />
-            <span className="relative z-[1] mb-[1.1rem] inline-flex items-center gap-[.5rem] font-head text-[.72rem] font-bold uppercase tracking-[.12em] text-gold-soft">
+            <span className="relative z-1 mb-[1.1rem] inline-flex items-center gap-[.5rem] font-head text-[.72rem] font-bold uppercase tracking-[.12em] text-gold-soft">
               <Icon name="shield-check" strokeWidth={1.8} className="h-4 w-4 text-gold" />
               {solution.tag}
             </span>
-            <p className="relative z-[1] font-head text-[clamp(1.15rem,1rem+.7vw,1.45rem)] font-bold leading-[1.4] tracking-[-0.015em] text-white">
+            <p className="relative z-1 font-head text-[clamp(1.15rem,1rem+.7vw,1.45rem)] font-bold leading-[1.4] tracking-[-0.015em] text-white">
               {solution.body}
             </p>
-            <div className="relative z-[1] mt-[1.6rem] flex flex-col gap-[.6rem]">
+            <div className="relative z-1 mt-[1.6rem] flex flex-col gap-[.6rem]">
               {solution.chips.map((chip) => (
                 <span
                   key={chip}
                   className="flex items-center gap-[.7rem] rounded-[11px] border border-gold/[.24] bg-gold/10 p-[.6rem_.9rem] font-head text-[.86rem] font-semibold text-gold-soft"
                 >
-                  <Icon name="check-circle" strokeWidth={1.8} className="h-[18px] w-[18px] flex-none text-gold" />
+                  <Icon name="check-circle" strokeWidth={1.8} className="h-4.5 w-4.5 flex-none text-gold" />
                   {chip}
                 </span>
               ))}
             </div>
-            <div className="relative z-[1] mt-[1.6rem] border-t border-gold/[.22] pt-[1.4rem]">
+            <div className="relative z-1 mt-[1.6rem] border-t border-gold/[.22] pt-[1.4rem]">
               <Button href={solution.cta.href} variant="primary" arrow className="w-full">
                 {solution.cta.label}
               </Button>

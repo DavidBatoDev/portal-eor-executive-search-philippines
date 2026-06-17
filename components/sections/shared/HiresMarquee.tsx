@@ -33,9 +33,9 @@ export function HiresMarquee({
         circles={[30, 55, 80, 99]}
         dot={12}
         colorClass="text-navy"
-        className="right-[-8%] top-[-30%] h-[560px] w-[560px] opacity-[0.035]"
+        className="right-[-8%] top-[-30%] h-140 w-140 opacity-[0.035]"
       />
-      <Container className="relative z-[1]">
+      <Container className="relative z-1">
         <Reveal className="flex flex-wrap items-end justify-between gap-8">
           <div>
             <Eyebrow className="mb-[1.1rem]">{eyebrow}</Eyebrow>
@@ -48,7 +48,7 @@ export function HiresMarquee({
         </Reveal>
       </Container>
 
-      <div className="hire-pause hire-mask relative z-[1] mt-[clamp(2rem,3.5vw,3rem)] flex overflow-hidden">
+      <div className="hire-pause hire-mask relative z-1 mt-[clamp(2rem,3.5vw,3rem)] flex overflow-hidden">
         <div className="hire-track flex flex-none items-stretch gap-[clamp(1.1rem,2vw,1.6rem)] py-[.6rem]">
           {loop.map((c, i) => (
             <HireCard key={i} card={c} duplicate={i >= cards.length} />
@@ -67,10 +67,10 @@ function HireCard({ card, duplicate }: { card: Hire; duplicate: boolean }) {
     >
       <div className="mb-[1.2rem] flex items-center justify-between gap-4">
         <span className="inline-flex items-center gap-[.45rem] rounded-full border border-[#f0e3c4] bg-gold-tint px-[.7rem] py-[.35rem] font-body text-[.74rem] font-semibold uppercase tracking-[.08em] text-gold-deep">
-          <Icon name="calendar" strokeWidth={2} className="h-[13px] w-[13px]" />
+          <Icon name="calendar" strokeWidth={2} className="h-3.25 w-3.25" />
           {card.month}
         </span>
-        <span className="h-[34px] w-[34px] flex-none text-gold opacity-50" aria-hidden="true">
+        <span className="h-8.5 w-8.5 flex-none text-gold opacity-50" aria-hidden="true">
           <svg viewBox="0 0 100 100" fill="none" className="h-full w-full">
             <g stroke="currentColor" strokeWidth="3">
               <circle cx="50" cy="50" r="22" />
@@ -80,7 +80,7 @@ function HireCard({ card, duplicate }: { card: Hire; duplicate: boolean }) {
           </svg>
         </span>
       </div>
-      <h3 className="mb-[.55rem] text-[1.18rem] leading-[1.25] text-navy">{card.role}</h3>
+      <h3 className="mb-[.55rem] text-[1.18rem] leading-tight text-navy">{card.role}</h3>
       <div className="mb-4 flex items-center gap-2 font-head text-[.88rem] font-semibold text-body">
         <Icon name="map-pin" strokeWidth={1.8} className="h-4 w-4 flex-none text-gold-deep" />
         {card.region}
@@ -91,7 +91,7 @@ function HireCard({ card, duplicate }: { card: Hire; duplicate: boolean }) {
           Service Used
         </span>
         <span className="inline-flex items-center gap-[.45rem] rounded-full border border-border bg-white px-[.85rem] py-[.4rem] font-head text-[.85rem] font-bold text-navy shadow-sm">
-          <span className="h-[7px] w-[7px] flex-none rounded-full bg-gold" />
+          <span className="h-1.75 w-1.75 flex-none rounded-full bg-gold" />
           {card.tag}
         </span>
       </div>

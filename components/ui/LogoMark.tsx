@@ -24,7 +24,7 @@ export function Logo({
 }) {
   return (
     <span className={`inline-flex items-center gap-[.62rem] ${className}`}>
-      <LogoMark className="h-[34px] w-[34px] flex-none text-gold" />
+      <LogoMark className="h-8.5 w-8.5 flex-none text-gold" />
       <span
         className={`font-head text-[1.42rem] font-extrabold tracking-[.16em] pl-[.04em] ${
           onDark ? "text-white" : "text-navy"

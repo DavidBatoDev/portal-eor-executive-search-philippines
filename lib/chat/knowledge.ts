@@ -11,6 +11,7 @@ import {
   footer,
 } from "@/lib/content/home";
 import { faq as eorFaq } from "@/lib/content/eor";
+import { faq as manpowerFaq } from "@/lib/content/manpower-solutions";
 
 const about = [
   intro.lead,
@@ -33,7 +34,7 @@ const teamBlock = team.members
   .map((m) => `- ${m.name} — ${m.role}`)
   .join("\n");
 
-const faqBlock = [...faq.items, ...eorFaq.items]
+const faqBlock = [...faq.items, ...eorFaq.items, ...manpowerFaq.items]
   .map((f) => `Q: ${f.q}\nA: ${f.a}`)
   .join("\n\n");
 

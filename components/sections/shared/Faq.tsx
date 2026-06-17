@@ -45,12 +45,12 @@ export function Faq({
                   <span>{item.q}</span>
                   <span
                     className={cx(
-                      "relative grid h-[26px] w-[26px] flex-none place-items-center rounded-[7px] transition-colors duration-200",
+                      "relative grid h-6.5 w-6.5 flex-none place-items-center rounded-[7px] transition-colors duration-200",
                       isOpen ? "bg-navy" : "bg-gold-tint"
                     )}
                     aria-hidden="true"
                   >
-                    <span className={cx("absolute h-[2px] w-[11px]", isOpen ? "bg-gold" : "bg-gold-deep")} />
+                    <span className={cx("absolute h-0.5 w-[11px]", isOpen ? "bg-gold" : "bg-gold-deep")} />
                     <span
                       className={cx(
                         "absolute h-[11px] w-[2px] transition-transform duration-200",

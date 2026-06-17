@@ -107,7 +107,7 @@ export function ChatWidget() {
               aria-label="Close chat"
               className="grid h-8 w-8 place-items-center rounded-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
             >
-              <Icon name="close" strokeWidth={2} className="h-[18px] w-[18px]" />
+              <Icon name="close" strokeWidth={2} className="h-4.5 w-4.5" />
             </button>
           </div>
 

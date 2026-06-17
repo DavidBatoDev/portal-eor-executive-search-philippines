@@ -1,63 +1,67 @@
 import type { Metadata } from "next";
 import { ServiceHero } from "@/components/sections/shared/ServiceHero";
-import { PainPoints } from "@/components/sections/eor/PainPoints";
+import { Pillars } from "@/components/sections/manpower-solutions/Pillars";
 import { ServiceUseCards } from "@/components/sections/shared/ServiceUseCards";
 import { ProcessSteps } from "@/components/sections/shared/ProcessSteps";
 import { AudienceCards } from "@/components/sections/shared/AudienceCards";
 import { HiresMarquee } from "@/components/sections/shared/HiresMarquee";
+import { Worksheet } from "@/components/sections/manpower-solutions/Worksheet";
+import { IndustriesRoles } from "@/components/sections/manpower-solutions/IndustriesRoles";
 import { Faq } from "@/components/sections/shared/Faq";
 import { FinalCta } from "@/components/sections/shared/FinalCta";
 import {
   meta,
   hero,
-  painPoints,
-  useCards,
+  whyPillars,
+  servicesOverview,
   process,
   whoFor,
   hires,
+  worksheet,
+  industries,
   faq,
   finalCta,
-} from "@/lib/content/eor";
+} from "@/lib/content/manpower-solutions";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: meta.title,
   description: meta.description,
-  path: "/eor",
+  path: "/manpower-solutions",
 });
 
-export default function EorPage() {
+export default function ManpowerSolutionsPage() {
   return (
     <main>
       <ServiceHero
         breadcrumb={hero.breadcrumb}
         current={hero.current}
         titlePre={hero.titlePre}
-        titleEm={hero.titleEm}
         lead={hero.lead}
-        roleSearch={hero.roleSearch}
+        ctas={hero.ctas}
       />
-      <PainPoints
-        eyebrow={painPoints.eyebrow}
-        heading={painPoints.heading}
-        intro={painPoints.intro}
-        items={painPoints.items}
-        solution={painPoints.solution}
+      <Pillars
+        eyebrow={whyPillars.eyebrow}
+        heading={whyPillars.heading}
+        lead={whyPillars.lead}
+        items={whyPillars.items}
       />
       <ServiceUseCards
-        eyebrow={useCards.eyebrow}
-        heading={useCards.heading}
-        lead={useCards.lead}
-        cards={useCards.cards}
-        ctaCard={useCards.ctaCard}
-        footCta={useCards.footCta}
+        id="services-overview"
+        eyebrow={servicesOverview.eyebrow}
+        heading={servicesOverview.heading}
+        lead={servicesOverview.lead}
+        cards={servicesOverview.cards}
+        ctaCard={servicesOverview.ctaCard}
       />
       <ProcessSteps
         eyebrow={process.eyebrow}
         heading={process.heading}
         steps={process.steps}
+        cols={5}
       />
       <AudienceCards
+        variant="solo"
         eyebrow={whoFor.eyebrow}
         heading={whoFor.heading}
         lead={whoFor.lead}
@@ -69,6 +73,14 @@ export default function EorPage() {
         heading={hires.heading}
         hint={hires.hint}
         cards={hires.cards}
+      />
+      <Worksheet content={worksheet} />
+      <IndustriesRoles
+        eyebrow={industries.eyebrow}
+        heading={industries.heading}
+        lead={industries.lead}
+        cards={industries.cards}
+        ctaCard={industries.ctaCard}
       />
       <Faq eyebrow={faq.eyebrow} heading={faq.heading} lead={faq.lead} items={faq.items} bg="white" />
       <FinalCta

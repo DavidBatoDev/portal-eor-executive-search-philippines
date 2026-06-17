@@ -23,7 +23,7 @@ export function SectionHead({
   return (
     <div
       className={cx(
-        center ? "mx-auto max-w-[min(940px,92%)] text-center" : "max-w-[760px]",
+        center ? "mx-auto max-w-[min(940px,92%)] text-center" : "max-w-190",
         className
       )}
     >
@@ -32,7 +32,7 @@ export function SectionHead({
       </Eyebrow>
       <h2>{heading}</h2>
       {lead && (
-        <p className={cx("lead mt-[1.25rem]", center && "mx-auto max-w-[62ch]")}>
+        <p className={cx("lead mt-5", center && "mx-auto max-w-[62ch]")}>
           {lead}
         </p>
       )}
