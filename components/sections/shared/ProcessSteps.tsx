@@ -38,11 +38,20 @@ export function ProcessSteps({
           <SectionHead eyebrow={eyebrow} eyebrowTone="soft" heading={heading} lead={lead} />
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-y-0">
+        <div
+          className={cx(
+            "mt-14 grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:gap-y-0",
+            steps.length >= 5 ? "lg:grid-cols-5" : "lg:grid-cols-4"
+          )}
+        >
           {steps.map((step, i) => {
             const isLast = i === steps.length - 1;
             return (
-              <Reveal key={step.n} delay={(i + 1) as 1 | 2 | 3 | 4} className="px-[1.6rem]">
+              <Reveal
+                key={step.n}
+                delay={Math.min(i + 1, 4) as 1 | 2 | 3 | 4}
+                className="px-[1.6rem]"
+              >
                 <div className="mb-[1.1rem] flex items-center gap-[.9rem]">
                   <span className="relative grid h-13.5 w-13.5 flex-none place-items-center">
                     <svg viewBox="0 0 54 54" fill="none" aria-hidden="true" className="absolute inset-0 h-full w-full">

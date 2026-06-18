@@ -17,7 +17,7 @@ const VARIANTS: Record<Variant, string> = {
 };
 
 const BASE =
-  "inline-flex items-center justify-center gap-[.6rem] font-head font-bold tracking-[-0.01em] rounded-sm border-[1.5px] border-transparent whitespace-nowrap transition-[transform,box-shadow,background-color,color,border-color] duration-200";
+  "inline-flex items-center justify-center gap-[.6rem] font-head font-bold tracking-[-0.01em] rounded-sm border-[1.5px] border-transparent whitespace-nowrap transition-[transform,translate,box-shadow,background-color,color,border-color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:duration-150 hover:ease-out";
 
 export function Button({
   children,

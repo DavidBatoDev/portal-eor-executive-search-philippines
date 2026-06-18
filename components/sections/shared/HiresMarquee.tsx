@@ -63,7 +63,7 @@ function HireCard({ card, duplicate }: { card: Hire; duplicate: boolean }) {
   return (
     <article
       aria-hidden={duplicate || undefined}
-      className="flex w-[clamp(300px,32vw,360px)] flex-none flex-col rounded-lg border border-border bg-white p-[1.7rem] shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1.25 hover:border-gold hover:shadow-lg"
+      className="flex w-[clamp(300px,32vw,360px)] flex-none flex-col rounded-lg border border-border bg-white p-[1.7rem] shadow-sm transition-[translate,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:duration-150 hover:ease-out hover:-translate-y-1.25 hover:border-gold hover:shadow-lg"
     >
       <div className="mb-[1.2rem] flex items-center justify-between gap-4">
         <span className="inline-flex items-center gap-[.45rem] rounded-full border border-[#f0e3c4] bg-gold-tint px-[.7rem] py-[.35rem] font-body text-[.74rem] font-semibold uppercase tracking-[.08em] text-gold-deep">

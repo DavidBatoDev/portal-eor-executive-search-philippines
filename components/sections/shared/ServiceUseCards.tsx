@@ -31,10 +31,10 @@ export function ServiceUseCards({
 }: {
   eyebrow: string;
   heading: string;
-  lead: string;
+  lead?: string;
   cards: UseCard[];
-  ctaCard: CtaCard;
-  footCta: { label: string; href: string };
+  ctaCard?: CtaCard;
+  footCta?: { label: string; href: string };
   id?: string;
 }) {
   return (
@@ -65,27 +65,31 @@ export function ServiceUseCards({
             </Reveal>
           ))}
 
-          <Reveal
-            as="article"
-            delay={3}
-            className="edge-gold relative flex flex-col overflow-hidden rounded-lg border border-navy bg-[linear-gradient(155deg,#16223c,#101828)] p-[2rem_1.8rem] shadow-sm transition-colors duration-200 hover:border-gold"
-          >
-            <span className="mb-[1.3rem] grid h-14 w-14 flex-none place-items-center rounded-[14px] bg-gold/14 text-gold-soft [&>svg]:h-6.5 [&>svg]:w-6.5">
-              <Icon name={ctaCard.icon} />
-            </span>
-            <h3 className="mb-[.6rem] text-[1.18rem] text-white">{ctaCard.title}</h3>
-            <p className="text-[.96rem] leading-[1.6] text-white/72">{ctaCard.body}</p>
-            <LinkArrow href={ctaCard.link.href} className="mt-[1.3rem] text-gold-soft">
-              {ctaCard.link.label}
-            </LinkArrow>
-          </Reveal>
+          {ctaCard && (
+            <Reveal
+              as="article"
+              delay={3}
+              className="edge-gold relative flex flex-col overflow-hidden rounded-lg border border-navy bg-[linear-gradient(155deg,#16223c,#101828)] p-[2rem_1.8rem] shadow-sm transition-colors duration-200 hover:border-gold"
+            >
+              <span className="mb-[1.3rem] grid h-14 w-14 flex-none place-items-center rounded-[14px] bg-gold/14 text-gold-soft [&>svg]:h-6.5 [&>svg]:w-6.5">
+                <Icon name={ctaCard.icon} />
+              </span>
+              <h3 className="mb-[.6rem] text-[1.18rem] text-white">{ctaCard.title}</h3>
+              <p className="text-[.96rem] leading-[1.6] text-white/72">{ctaCard.body}</p>
+              <LinkArrow href={ctaCard.link.href} className="mt-[1.3rem] text-gold-soft">
+                {ctaCard.link.label}
+              </LinkArrow>
+            </Reveal>
+          )}
         </div>
 
-        <Reveal className="mt-[clamp(2.4rem,4vw,3.2rem)] flex justify-center">
-          <Button href={footCta.href} variant="primary" arrow>
-            {footCta.label}
-          </Button>
-        </Reveal>
+        {footCta && (
+          <Reveal className="mt-[clamp(2.4rem,4vw,3.2rem)] flex justify-center">
+            <Button href={footCta.href} variant="primary" arrow>
+              {footCta.label}
+            </Button>
+          </Reveal>
+        )}
       </Container>
     </Section>
   );
