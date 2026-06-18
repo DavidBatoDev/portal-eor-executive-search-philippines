@@ -89,7 +89,6 @@ export const hero = {
       icon: "monitor" as IconName,
     },
   ],
-  previewLabel: "Our Workforce Services",
 };
 
 export const proof = {
