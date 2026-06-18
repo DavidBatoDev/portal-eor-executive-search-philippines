@@ -15,7 +15,7 @@ import { cx } from "@/lib/cx";
 export function Nav() {
   const scrolled = useStickyNav();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { links, servicesHref } = navFor(usePathname());
+  const { links, servicesHref, homeHref } = navFor(usePathname());
 
   const linkBase =
     "font-body text-[.96rem] font-medium tracking-[-0.005em] transition-colors";
@@ -40,6 +40,13 @@ export function Nav() {
 
           <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center gap-8">
+              {homeHref && (
+                <li>
+                  <Link href={homeHref} className={cx(linkBase, linkColor)}>
+                    Home
+                  </Link>
+                </li>
+              )}
               {/* Services mega-dropdown */}
               <li className="group relative">
                 <button
@@ -121,6 +128,7 @@ export function Nav() {
         onClose={() => setMobileOpen(false)}
         links={links}
         servicesHref={servicesHref}
+        homeHref={homeHref}
       />
     </>
   );

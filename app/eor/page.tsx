@@ -33,9 +33,8 @@ export default function EorPage() {
         breadcrumb={hero.breadcrumb}
         current={hero.current}
         titlePre={hero.titlePre}
-        titleEm={hero.titleEm}
         lead={hero.lead}
-        roleSearch={hero.roleSearch}
+        ctas={hero.ctas}
       />
       <PainPoints
         eyebrow={painPoints.eyebrow}

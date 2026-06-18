@@ -10,11 +10,13 @@ export function MobileMenu({
   onClose,
   links,
   servicesHref,
+  homeHref,
 }: {
   open: boolean;
   onClose: () => void;
   links: NavLink[];
   servicesHref: string;
+  homeHref?: string;
 }) {
   // Lock body scroll while the menu is open (portal.js setMenu behavior).
   useEffect(() => {
@@ -24,7 +26,11 @@ export function MobileMenu({
     };
   }, [open]);
 
-  const items = [{ label: "Services", href: servicesHref }, ...links];
+  const items = [
+    ...(homeHref ? [{ label: "Home", href: homeHref }] : []),
+    { label: "Services", href: servicesHref },
+    ...links,
+  ];
 
   return (
     <div

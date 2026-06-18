@@ -16,14 +16,11 @@ export const hero = {
     { label: "Services", href: "/#services" },
   ],
   current: "Employer of Record",
-  titlePre: "Employer of Record Philippines — Hire with ",
-  titleEm: "Compliance and Confidence",
-  lead: "Portal helps companies employ talent in the Philippines through compliance-first EOR services, without immediately setting up a local entity. Enter the role you want to hire for below to start your personalized workforce assessment.",
-  roleSearch: {
-    service: "eor",
-    placeholder: "Enter the role you want to hire for…",
-    submitLabel: "Start Assessment",
-    hint: "EOR service preselected · Takes about 2 minutes",
+  titlePre: "Employer of Record Philippines",
+  lead: "Portal helps companies employ talent in the Philippines through compliance-first EOR services, without immediately setting up a local entity.",
+  ctas: {
+    primary: { label: "Submit an Inquiry", href: "#contact" },
+    secondary: { label: "Book a Consultation", href: "#contact" },
   },
 };
 

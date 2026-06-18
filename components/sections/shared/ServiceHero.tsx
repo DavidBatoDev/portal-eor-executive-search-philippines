@@ -1,19 +1,15 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
+import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { RingWatermark } from "@/components/ui/RingWatermark";
 
 type Crumb = { label: string; href: string };
-type RoleSearch = {
-  service: string;
-  placeholder: string;
-  submitLabel: string;
-  hint: string;
-};
+type Cta = { label: string; href: string };
 
 // Inner service-page hero: single centered column, compact height, skyline
-// parallax background (§6). Optional role-search bar GETs to /assessment.
+// parallax background (§6). Optional primary/secondary CTAs below the lead.
 export function ServiceHero({
   breadcrumb,
   current,
@@ -21,7 +17,7 @@ export function ServiceHero({
   titleEm,
   titlePost,
   lead,
-  roleSearch,
+  ctas,
 }: {
   breadcrumb: Crumb[];
   current: string;
@@ -29,7 +25,7 @@ export function ServiceHero({
   titleEm?: string;
   titlePost?: string;
   lead: string;
-  roleSearch?: RoleSearch;
+  ctas?: { primary: Cta; secondary?: Cta };
 }) {
   return (
     <section className="hero-skyline on-dark relative overflow-hidden pt-[clamp(8.5rem,7rem+6vw,11rem)] pb-[clamp(5rem,3.5rem+4vw,7rem)]">
@@ -62,47 +58,20 @@ export function ServiceHero({
 
           <p className="lead mx-auto mt-8 max-w-190 leading-[1.7]">{lead}</p>
 
-          {roleSearch && <RoleSearch {...roleSearch} />}
+          {ctas && (
+            <div className="mt-9 flex flex-wrap justify-center gap-4">
+              <Button href={ctas.primary.href} variant="primary" arrow>
+                {ctas.primary.label}
+              </Button>
+              {ctas.secondary && (
+                <Button href={ctas.secondary.href} variant="ghost-dark">
+                  {ctas.secondary.label}
+                </Button>
+              )}
+            </div>
+          )}
         </div>
       </Container>
     </section>
-  );
-}
-
-function RoleSearch({ service, placeholder, submitLabel, hint }: RoleSearch) {
-  return (
-    <>
-      <form
-        action="/assessment"
-        method="get"
-        role="search"
-        aria-label="Start your workforce assessment"
-        className="mx-auto mt-[2.6rem] flex max-w-165 items-center gap-2 rounded-full border border-white/18 bg-white/6 p-[.5rem_.5rem_.5rem_1.35rem] text-left shadow-[0_18px_50px_rgba(0,0,0,.32)] backdrop-blur-sm transition-[border-color,box-shadow] focus-within:border-gold/60 focus-within:shadow-[0_0_0_4px_rgba(217,164,55,.14),0_18px_50px_rgba(0,0,0,.34)] max-[560px]:flex-col max-[560px]:items-stretch max-[560px]:gap-[.7rem] max-[560px]:rounded-2xl max-[560px]:p-[.85rem]"
-      >
-        <input type="hidden" name="service" value={service} />
-        <span className="grid flex-none place-items-center text-gold-soft max-[560px]:hidden" aria-hidden="true">
-          <Icon name="search" strokeWidth={1.8} className="h-5.5 w-5.5" />
-        </span>
-        <input
-          type="text"
-          name="role"
-          autoComplete="off"
-          required
-          placeholder={placeholder}
-          aria-label="Role you want to hire for"
-          className="min-w-0 flex-1 border-none bg-transparent p-[.75rem_.3rem] font-body text-[1.05rem] text-white outline-none placeholder:text-white/55 max-[560px]:rounded-[11px] max-[560px]:border max-[560px]:border-white/16 max-[560px]:bg-white/6 max-[560px]:p-[.9rem_1rem] max-[560px]:text-center max-[560px]:text-base"
-        />
-        <button
-          type="submit"
-          className="inline-flex flex-none items-center justify-center gap-[.6rem] rounded-full bg-gold px-[1.55rem] py-[.85rem] font-head font-bold text-navy shadow-gold transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 hover:bg-gold-soft max-[560px]:w-full"
-        >
-          {submitLabel}
-          <Icon name="arrow-right" strokeWidth={2.2} className="h-4.5 w-4.5" />
-        </button>
-      </form>
-      <p className="mt-[1.1rem] flex flex-wrap items-center justify-center gap-[.55rem] text-[.85rem] text-white/60">
-        {hint}
-      </p>
-    </>
   );
 }

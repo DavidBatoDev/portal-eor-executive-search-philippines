@@ -3,7 +3,8 @@
 // page keeps its own section anchors while reusing one nav component.
 
 export type NavLink = { label: string; href: string; sec?: string };
-export type NavConfig = { links: NavLink[]; servicesHref: string };
+// `homeHref` adds a leading "Home" link on inner pages (the homepage omits it).
+export type NavConfig = { links: NavLink[]; servicesHref: string; homeHref?: string };
 
 const HOME: NavConfig = {
   links: [
@@ -23,10 +24,11 @@ export const NAV_BY_PATH: Record<string, NavConfig> = {
       { label: "FAQ", href: "#faq", sec: "faq" },
     ],
     servicesHref: "/#services",
+    homeHref: "/",
   },
 };
 
 export function navFor(pathname: string): NavConfig {
-  // Service pages link back to the homepage services section.
-  return NAV_BY_PATH[pathname] ?? { ...HOME, servicesHref: "/#services" };
+  // Service pages link back to the homepage services section, with a Home link.
+  return NAV_BY_PATH[pathname] ?? { ...HOME, servicesHref: "/#services", homeHref: "/" };
 }
