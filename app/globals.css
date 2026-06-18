@@ -167,12 +167,28 @@
 }
 
 /* ---------- Scroll reveal (§8) ---------- */
+/* Entrance uses opacity + transform. The trailing translate/box-shadow/border
+   entries let card hover (lift/slide/shadow/border) ease, since this unlayered
+   rule otherwise overrides the cards' utility transition. In Tailwind v4 the
+   lift is the `translate` property (not `transform`). The base values govern the
+   hover-OUT (smooth); `.reveal:hover` governs the hover-IN (fast, no delay). */
 .reveal {
   opacity: 0;
   transform: translateY(22px);
   transition:
     opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    translate 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal:hover {
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    translate 0.15s cubic-bezier(0, 0, 0.2, 1),
+    box-shadow 0.15s cubic-bezier(0, 0, 0.2, 1),
+    border-color 0.15s cubic-bezier(0, 0, 0.2, 1);
 }
 .reveal.in {
   opacity: 1;
@@ -195,20 +211,13 @@
   html {
     scroll-behavior: auto;
   }
+  /* Skip the scroll-in entrance (cards start visible) but keep the hover
+     lift/shadow/border easing from .reveal's base transition. */
   .reveal,
   .reveal.in {
     opacity: 1;
     transform: none;
-    transition: none;
   }
-  .marquee-track,
-  .hire-track {
-    animation: none;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hire-mask {
-    -webkit-mask: none;
-    mask: none;
-  }
+  /* The stats/hires marquees keep scrolling even under reduced-motion (by
+     product request) so the carousel stays infinite — they pause on hover. */
 }
