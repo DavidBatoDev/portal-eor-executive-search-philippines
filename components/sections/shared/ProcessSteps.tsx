@@ -14,6 +14,7 @@ export function ProcessSteps({
   heading,
   lead,
   steps,
+  cols = 4,
   ringCircles = [30, 52, 74, 96],
   ringDot = 12,
   id = "process",
@@ -22,10 +23,13 @@ export function ProcessSteps({
   heading: string;
   lead?: string;
   steps: Step[];
+  cols?: 4 | 5;
   ringCircles?: number[];
   ringDot?: number;
   id?: string;
 }) {
+  // Tailwind needs complete class strings — map the column count explicitly.
+  const colsClass = cols === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4";
   return (
     <Section id={id} bg="navy" dark className="overflow-hidden">
       <RingWatermark
@@ -38,11 +42,11 @@ export function ProcessSteps({
           <SectionHead eyebrow={eyebrow} eyebrowTone="soft" heading={heading} lead={lead} />
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-y-0">
+        <div className={cx("mt-14 grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:gap-y-0", colsClass)}>
           {steps.map((step, i) => {
             const isLast = i === steps.length - 1;
             return (
-              <Reveal key={step.n} delay={(i + 1) as 1 | 2 | 3 | 4} className="px-[1.6rem]">
+              <Reveal key={step.n} delay={Math.min(i + 1, 4) as 1 | 2 | 3 | 4} className="px-[1.6rem]">
                 <div className="mb-[1.1rem] flex items-center gap-[.9rem]">
                   <span className="relative grid h-13.5 w-13.5 flex-none place-items-center">
                     <svg viewBox="0 0 54 54" fill="none" aria-hidden="true" className="absolute inset-0 h-full w-full">
