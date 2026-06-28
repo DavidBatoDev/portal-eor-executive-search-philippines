@@ -94,12 +94,12 @@ export const hero = {
 export const proof = {
   label: "Proven Philippine Workforce Support",
   stats: [
-    { num: "25+", lbl: "Years in Business" },
-    { num: "500+", lbl: "Companies Served" },
-    { num: "12,000+", lbl: "Workers Managed" },
-    { num: "7", lbl: "Nationwide Offices" },
-    { num: "₱150M+", lbl: "Monthly Payroll Managed" },
-    { num: "20+", lbl: "Industries Supported" },
+    { num: "15", lbl: "Years in Business" },
+    { num: "52", lbl: "Companies Served" },
+    { num: "6,000", lbl: "Workers Managed" },
+    { num: "9", lbl: "Offices Nationwide" },
+    { num: "₱80M", lbl: "Monthly Payroll Managed" },
+    { num: "19", lbl: "Industries Supported" },
   ],
 };
 
