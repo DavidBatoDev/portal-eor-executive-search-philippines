@@ -42,6 +42,9 @@ export function InquiryForm({
   bullets,
   footNote,
   layout = "centered",
+  bg = "white",
+  notesLabel = "Services Needed / Notes",
+  notesPlaceholder = "Tell us which functions you'd like to centralize, team size, and timeline",
   id = "inquiry",
 }: {
   eyebrow: string;
@@ -51,6 +54,9 @@ export function InquiryForm({
   bullets?: string[];
   footNote?: string;
   layout?: "centered" | "split";
+  bg?: "white" | "cream";
+  notesLabel?: string;
+  notesPlaceholder?: string;
   id?: string;
 }) {
   const [sent, setSent] = useState(false);
@@ -61,7 +67,7 @@ export function InquiryForm({
 
   if (layout === "split") {
     return (
-      <Section id={id} bg="white">
+      <Section id={id} bg={bg}>
         <Container>
           <div className="grid gap-[clamp(2rem,5vw,5rem)] lg:grid-cols-[5fr_6fr] lg:items-start">
             {/* Left: description */}
@@ -178,7 +184,7 @@ export function InquiryForm({
 
   // ─── Centered (default) layout ───────────────────────────────────────────────
   return (
-    <Section id={id} bg="white">
+    <Section id={id} bg={bg}>
       <Container>
         <Reveal>
           <SectionHead center eyebrow={eyebrow} heading={heading} />
@@ -227,8 +233,8 @@ export function InquiryForm({
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="ss-notes" className={labelClass}>Services Needed / Notes</label>
-                  <textarea id="ss-notes" name="notes" rows={4} placeholder="Tell us which functions you'd like to centralize, team size, and timeline" className={`${fieldClass} resize-y`} />
+                  <label htmlFor="ss-notes" className={labelClass}>{notesLabel}</label>
+                  <textarea id="ss-notes" name="notes" rows={4} placeholder={notesPlaceholder} className={`${fieldClass} resize-y`} />
                 </div>
 
                 <button

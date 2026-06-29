@@ -6,8 +6,9 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { RingWatermark } from "@/components/ui/RingWatermark";
+import { cx } from "@/lib/cx";
 
-type PainItem = { icon: IconName; title: string; body: string };
+type PainItem = { icon: IconName; title: string; body?: string };
 type Solution = {
   tag: string;
   body: string;
@@ -22,6 +23,8 @@ export function PainPoints({
   items,
   solution,
   image,
+  imageClassName = "object-right opacity-50",
+  bg,
   id = "challenges",
 }: {
   eyebrow: string;
@@ -30,10 +33,12 @@ export function PainPoints({
   items: PainItem[];
   solution: Solution;
   image?: string;
+  imageClassName?: string;
+  bg?: "white" | "cream";
   id?: string;
 }) {
   return (
-    <Section id={id} bg={image ? "cream" : "white"} className={image ? "overflow-hidden" : undefined}>
+    <Section id={id} bg={bg ?? (image ? "cream" : "white")} className={image ? "overflow-hidden" : undefined}>
       {image && (
         <Image
           src={image}
@@ -41,7 +46,7 @@ export function PainPoints({
           aria-hidden="true"
           fill
           sizes="100vw"
-          className="pointer-events-none select-none object-cover object-right opacity-50"
+          className={cx("pointer-events-none select-none object-cover", imageClassName)}
         />
       )}
       <Container className={image ? "relative z-1" : undefined}>
@@ -56,14 +61,17 @@ export function PainPoints({
             {items.map((item) => (
               <Reveal
                 key={item.title}
-                className="flex items-start gap-[1.1rem] rounded border border-border bg-white p-[1.3rem_1.4rem] shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:translate-x-0.75 hover:border-[#dfe2e7] hover:shadow"
+                className={cx(
+                  "flex gap-[1.1rem] rounded border border-border bg-white p-[1.3rem_1.4rem] shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:translate-x-0.75 hover:border-[#dfe2e7] hover:shadow",
+                  item.body ? "items-start" : "items-center"
+                )}
               >
                 <span className="grid h-11.5 w-11.5 flex-none place-items-center rounded-xl border border-[#ecd9c7] bg-copper-tint text-copper">
                   <Icon name={item.icon} strokeWidth={1.7} className="h-5.5 w-5.5" />
                 </span>
                 <div>
-                  <h4 className="mb-1 text-[1.04rem]">{item.title}</h4>
-                  <p className="text-[.95rem] leading-[1.55]">{item.body}</p>
+                  <h4 className={cx("text-[1.04rem]", item.body && "mb-1")}>{item.title}</h4>
+                  {item.body && <p className="text-[.95rem] leading-[1.55]">{item.body}</p>}
                 </div>
               </Reveal>
             ))}
@@ -87,17 +95,19 @@ export function PainPoints({
               <p className="font-head text-[clamp(1.15rem,1rem+.7vw,1.45rem)] font-bold leading-[1.4] tracking-[-0.015em] text-white">
                 {solution.body}
               </p>
-              <div className="mt-[1.6rem] flex flex-col gap-[.6rem]">
-                {solution.chips.map((chip) => (
-                  <span
-                    key={chip}
-                    className="flex items-center gap-[.7rem] rounded-[11px] border border-gold/24 bg-gold/10 p-[.6rem_.9rem] font-head text-[.86rem] font-semibold text-gold-soft"
-                  >
-                    <Icon name="check-circle" strokeWidth={1.8} className="h-4.5 w-4.5 flex-none text-gold" />
-                    {chip}
-                  </span>
-                ))}
-              </div>
+              {solution.chips.length > 0 && (
+                <div className="mt-[1.6rem] flex flex-col gap-[.6rem]">
+                  {solution.chips.map((chip) => (
+                    <span
+                      key={chip}
+                      className="flex items-center gap-[.7rem] rounded-[11px] border border-gold/24 bg-gold/10 p-[.6rem_.9rem] font-head text-[.86rem] font-semibold text-gold-soft"
+                    >
+                      <Icon name="check-circle" strokeWidth={1.8} className="h-4.5 w-4.5 flex-none text-gold" />
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
             <div className="relative z-1 mt-[1.6rem] border-t border-gold/22 pt-[1.4rem]">
               <Button href={solution.cta.href} variant="primary" arrow className="w-full">

@@ -5,6 +5,7 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { LinkArrow } from "@/components/ui/LinkArrow";
+import { cx } from "@/lib/cx";
 
 type AudienceCard = { icon: IconName; title: string; body?: string };
 type CtaCard = { title: string; body: string; link: { label: string; href: string } };
@@ -17,6 +18,7 @@ export function AudienceCards({
   ctaCard,
   variant = "default",
   image,
+  imageClassName = "object-left mask-[radial-gradient(circle_at_top_left,black_10%,transparent_60%)]",
   id = "who",
 }: {
   eyebrow: string;
@@ -26,6 +28,7 @@ export function AudienceCards({
   ctaCard: CtaCard;
   variant?: "default" | "solo";
   image?: string;
+  imageClassName?: string;
   id?: string;
 }) {
   const solo = variant === "solo";
@@ -38,7 +41,7 @@ export function AudienceCards({
           aria-hidden="true"
           fill
           sizes="100vw"
-          className="pointer-events-none select-none object-cover object-left mask-[radial-gradient(circle_at_top_left,black_10%,transparent_60%)]"
+          className={cx("pointer-events-none select-none object-cover", imageClassName)}
         />
       )}
       <Container className={image ? "relative z-1" : undefined}>
@@ -65,13 +68,16 @@ export function AudienceCards({
                 as="article"
                 key={c.title}
                 delay={((i % 3) + 1) as 1 | 2 | 3}
-                className="flex items-start gap-4 rounded border border-border bg-white p-6 shadow-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-0.75 hover:shadow"
+                className={cx(
+                  "flex gap-4 rounded border border-border bg-white p-6 shadow-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-0.75 hover:shadow",
+                  c.body ? "items-start" : "items-center"
+                )}
               >
                 <span className="grid h-11 w-11 flex-none place-items-center rounded-[11px] bg-navy text-gold">
                   <Icon name={c.icon} className="h-5.25 w-5.25" />
                 </span>
                 <div>
-                  <h4 className="mb-[.3rem] text-[1.02rem]">{c.title}</h4>
+                  <h4 className={cx("text-[1.02rem]", c.body && "mb-[.3rem]")}>{c.title}</h4>
                   {c.body && <p className="text-[.9rem] leading-normal">{c.body}</p>}
                 </div>
               </Reveal>
