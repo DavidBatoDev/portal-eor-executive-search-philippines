@@ -3,21 +3,31 @@ import { Container } from "@/components/layout/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon, type IconName } from "@/components/ui/Icon";
+import { LinkArrow } from "@/components/ui/LinkArrow";
 
 type Industry = { icon: IconName; title: string; roles: string[] };
+type CtaCard = {
+  icon: IconName;
+  title: string;
+  body: string;
+  link: { label: string; href: string };
+};
 
 // Coverage grid: each card pairs an industry with a checklist of supported roles.
+// Optional `ctaCard` appends a dark navy call-to-action card at the end.
 export function IndustriesRoles({
   eyebrow,
   heading,
   lead,
   industries,
+  ctaCard,
   id = "industries",
 }: {
   eyebrow: string;
   heading: string;
   lead?: string;
   industries: Industry[];
+  ctaCard?: CtaCard;
   id?: string;
 }) {
   return (
@@ -51,6 +61,23 @@ export function IndustriesRoles({
               </ul>
             </Reveal>
           ))}
+
+          {ctaCard && (
+            <Reveal
+              as="article"
+              delay={((industries.length % 3) + 1) as 1 | 2 | 3}
+              className="flex flex-col rounded-lg border border-navy bg-[linear-gradient(155deg,#16223c,#101828)] p-[1.8rem] shadow-sm transition-colors duration-200 hover:border-gold"
+            >
+              <span className="mb-5 grid h-12 w-12 flex-none place-items-center rounded-xl bg-gold/14 text-gold-soft [&>svg]:h-5.5 [&>svg]:w-5.5">
+                <Icon name={ctaCard.icon} />
+              </span>
+              <h3 className="mb-2 text-[1.18rem] text-white">{ctaCard.title}</h3>
+              <p className="text-[.96rem] leading-[1.65] text-white/70">{ctaCard.body}</p>
+              <LinkArrow href={ctaCard.link.href} className="mt-5 text-gold-soft">
+                {ctaCard.link.label}
+              </LinkArrow>
+            </Reveal>
+          )}
         </div>
       </Container>
     </Section>

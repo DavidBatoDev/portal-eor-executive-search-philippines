@@ -50,6 +50,16 @@ export const NAV_BY_PATH: Record<string, NavConfig> = {
     homeHref: "/",
     ctaLabel: "Book a Meeting",
   },
+  "/bpo-lite": {
+    links: [
+      { label: "How It Works", href: "#process", sec: "process" },
+      { label: "Who It's For", href: "#who", sec: "who" },
+      { label: "FAQ", href: "#faq", sec: "faq" },
+    ],
+    servicesHref: "/#services",
+    homeHref: "/",
+    ctaLabel: "Book a Meeting",
+  },
 };
 
 export function navFor(pathname: string): NavConfig {

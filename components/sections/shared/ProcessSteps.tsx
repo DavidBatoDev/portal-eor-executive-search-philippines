@@ -1,6 +1,6 @@
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
-import { SectionHead } from "@/components/ui/SectionHead";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { RingWatermark } from "@/components/ui/RingWatermark";
 import { cx } from "@/lib/cx";
@@ -39,7 +39,11 @@ export function ProcessSteps({
       />
       <Container className="relative z-2">
         <Reveal>
-          <SectionHead eyebrow={eyebrow} eyebrowTone="soft" heading={heading} lead={lead} />
+          <div>
+            <Eyebrow center tone="soft" className="mb-[1.1rem]">{eyebrow}</Eyebrow>
+            <h2 className="max-w-190">{heading}</h2>
+            {lead && <p className="lead mt-5 max-w-190">{lead}</p>}
+          </div>
         </Reveal>
 
         <div className={cx("mt-14 grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:gap-y-0", colsClass)}>
