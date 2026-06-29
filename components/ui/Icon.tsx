@@ -362,6 +362,14 @@ const PATHS = {
       <path d="M9 20v-4h2v4" />
     </>
   ),
+  asterisk: (
+    <>
+      <line x1="12" y1="3" x2="12" y2="21" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="5.64" y1="5.64" x2="18.36" y2="18.36" />
+      <line x1="18.36" y1="5.64" x2="5.64" y2="18.36" />
+    </>
+  ),
 } as const;
 
 export type IconName = keyof typeof PATHS;

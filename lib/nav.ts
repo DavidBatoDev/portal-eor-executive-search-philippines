@@ -21,6 +21,8 @@ const HOME: NavConfig = {
     { label: "Resources", href: "#faq", sec: "faq" },
   ],
   servicesHref: "#services",
+  ctaLabel: "Book a Meeting",
+  ctaHref: "/book-a-meeting",
 };
 
 export const NAV_BY_PATH: Record<string, NavConfig> = {
@@ -51,6 +53,7 @@ export const NAV_BY_PATH: Record<string, NavConfig> = {
     servicesHref: "/#services",
     homeHref: "/",
     ctaLabel: "Book a Meeting",
+    ctaHref: "/book-a-meeting",
   },
   "/bpo-lite": {
     links: [
@@ -61,6 +64,7 @@ export const NAV_BY_PATH: Record<string, NavConfig> = {
     servicesHref: "/#services",
     homeHref: "/",
     ctaLabel: "Book a Meeting",
+    ctaHref: "/book-a-meeting",
   },
   "/contact": {
     links: [
@@ -72,6 +76,17 @@ export const NAV_BY_PATH: Record<string, NavConfig> = {
     homeHref: "/",
     ctaLabel: "Send an Inquiry",
     ctaHref: "#inquiry",
+  },
+  "/book-a-meeting": {
+    links: [
+      { label: "How It Works", href: "/#advantage" },
+      { label: "Who We Help", href: "/#who" },
+      { label: "Contact", href: "/contact" },
+    ],
+    servicesHref: "/#services",
+    homeHref: "/",
+    ctaLabel: "Book a Meeting",
+    ctaHref: "#schedule",
   },
 };
 

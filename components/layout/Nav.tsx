@@ -16,14 +16,14 @@ export function Nav() {
   const pathname = usePathname();
   const stickyScrolled = useStickyNav();
   // Contact page has a light background from the top — always show the scrolled nav style.
-  const scrolled = stickyScrolled || pathname === "/contact";
+  const scrolled = stickyScrolled || pathname === "/contact" || pathname === "/book-a-meeting";
   const [mobileOpen, setMobileOpen] = useState(false);
   const {
     links,
     servicesHref,
     homeHref,
-    ctaLabel = "Book a Consultation",
-    ctaHref = "#contact",
+    ctaLabel = "Book a Meeting",
+    ctaHref = "/book-a-meeting",
   } = navFor(pathname);
 
   const linkBase =
