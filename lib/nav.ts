@@ -5,11 +5,13 @@
 export type NavLink = { label: string; href: string; sec?: string };
 // `homeHref` adds a leading "Home" link on inner pages (the homepage omits it).
 // `ctaLabel` overrides the header CTA text (defaults to "Book a Consultation").
+// `ctaHref` overrides the header CTA destination (defaults to "#contact").
 export type NavConfig = {
   links: NavLink[];
   servicesHref: string;
   homeHref?: string;
   ctaLabel?: string;
+  ctaHref?: string;
 };
 
 const HOME: NavConfig = {
@@ -59,6 +61,17 @@ export const NAV_BY_PATH: Record<string, NavConfig> = {
     servicesHref: "/#services",
     homeHref: "/",
     ctaLabel: "Book a Meeting",
+  },
+  "/contact": {
+    links: [
+      { label: "How It Works", href: "/#advantage" },
+      { label: "Who We Help", href: "/#who" },
+      { label: "Contact", href: "/contact" },
+    ],
+    servicesHref: "/#services",
+    homeHref: "/",
+    ctaLabel: "Send an Inquiry",
+    ctaHref: "#inquiry",
   },
 };
 

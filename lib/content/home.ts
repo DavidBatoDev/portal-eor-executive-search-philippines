@@ -79,7 +79,7 @@ export const hero = {
     { text: " for growing companies." },
   ],
   lead: "We help you find, verify, and employ trusted talent through Employer of Record, Executive Search, and Background Investigation services, supported by nationwide operations, compliance-first employment processes, and our own HRIS, payroll, and accounting systems.",
-  primaryCta: { label: "Book Consultation", href: "#contact" },
+  primaryCta: { label: "Book Consultation", href: "/contact" },
   secondaryCta: { label: "Explore Services", href: "#services" },
   tags: [
     { label: "Compliance-First EOR", icon: "shield-check" as IconName },
@@ -451,8 +451,8 @@ export const finalCta = {
   eyebrow: "Let's talk",
   heading: "Build your Philippine team with confidence",
   lead: "Whether you need to hire your first employee, find a senior leader, verify a candidate, or build a more reliable workforce process, Portal is ready to help. Talk to us today and discover the right hiring path for your business.",
-  primaryCta: { label: "Book Consultation", href: "#contact" },
-  secondaryCta: { label: "Explore Services", href: "#services" },
+  primaryCta: { label: "Book Consultation", href: "/contact" },
+  secondaryCta: { label: "Inquire Today", href: "/contact" },
 };
 
 export const footer = {
@@ -487,9 +487,9 @@ export const footer = {
     {
       heading: "Get Started",
       links: [
-        { label: "Book a Consultation", href: "#contact" },
-        { label: "Request an Assessment", href: "#contact" },
-        { label: "Contact Us", href: "#contact" },
+        { label: "Book a Consultation", href: "/contact" },
+        { label: "Request an Assessment", href: "/contact" },
+        { label: "Contact Us", href: "/contact" },
         { label: "Locations", href: "#nationwide" },
       ],
     },

@@ -12,6 +12,7 @@ export function MobileMenu({
   servicesHref,
   homeHref,
   ctaLabel = "Book a Consultation",
+  ctaHref = "#contact",
 }: {
   open: boolean;
   onClose: () => void;
@@ -19,6 +20,7 @@ export function MobileMenu({
   servicesHref: string;
   homeHref?: string;
   ctaLabel?: string;
+  ctaHref?: string;
 }) {
   // Lock body scroll while the menu is open (portal.js setMenu behavior).
   useEffect(() => {
@@ -64,7 +66,7 @@ export function MobileMenu({
           </a>
         ))}
         <a
-          href="#contact"
+          href={ctaHref}
           onClick={onClose}
           className="mt-[1.8rem] inline-flex w-full items-center justify-center rounded-sm bg-gold px-[1.6rem] py-[.92rem] font-head font-bold text-navy shadow-gold"
         >

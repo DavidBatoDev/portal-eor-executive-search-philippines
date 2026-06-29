@@ -13,10 +13,18 @@ import { navFor } from "@/lib/nav";
 import { cx } from "@/lib/cx";
 
 export function Nav() {
-  const scrolled = useStickyNav();
+  const pathname = usePathname();
+  const stickyScrolled = useStickyNav();
+  // Contact page has a light background from the top — always show the scrolled nav style.
+  const scrolled = stickyScrolled || pathname === "/contact";
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { links, servicesHref, homeHref, ctaLabel = "Book a Consultation" } =
-    navFor(usePathname());
+  const {
+    links,
+    servicesHref,
+    homeHref,
+    ctaLabel = "Book a Consultation",
+    ctaHref = "#contact",
+  } = navFor(pathname);
 
   const linkBase =
     "font-body text-[.96rem] font-medium tracking-[-0.005em] transition-colors";
@@ -50,8 +58,8 @@ export function Nav() {
               )}
               {/* Services mega-dropdown */}
               <li className="group relative">
-                <button
-                  type="button"
+                <Link
+                  href={servicesHref}
                   className={cx(linkBase, linkColor, "inline-flex items-center gap-[.34rem]")}
                 >
                   Services
@@ -60,7 +68,7 @@ export function Nav() {
                     strokeWidth={2.4}
                     className="h-2.75 w-2.75 opacity-70"
                   />
-                </button>
+                </Link>
                 <div
                   className={cx(
                     "invisible absolute left-1/2 top-[calc(100%+14px)] grid w-160 -translate-x-1/2 translate-y-2 grid-cols-2 gap-[.2rem] rounded-[14px] border border-border bg-white p-[.6rem] opacity-0 shadow-lg transition-[opacity,transform] duration-200",
@@ -104,8 +112,8 @@ export function Nav() {
 
           <div className="flex items-center gap-[1.1rem]">
             <a
-              href="#contact"
-              className="hidden rounded-sm bg-gold px-5 py-[.7rem] font-head text-[.95rem] font-bold text-navy shadow-gold transition-[transform,translate,box-shadow,background-color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:duration-150 hover:ease-out hover:-translate-y-0.5 hover:bg-gold-soft lg:inline-flex"
+              href={ctaHref}
+              className="hidden rounded-sm bg-gold px-5 py-[.7rem] font-head text-[.95rem] font-bold text-navy shadow-gold transition-[transform,translate,box-shadow,background-color] duration-200 ease-in-out hover:duration-150 hover:ease-out hover:-translate-y-0.5 hover:bg-gold-soft lg:inline-flex"
             >
               {ctaLabel}
             </a>
@@ -131,6 +139,7 @@ export function Nav() {
         servicesHref={servicesHref}
         homeHref={homeHref}
         ctaLabel={ctaLabel}
+        ctaHref={ctaHref}
       />
     </>
   );

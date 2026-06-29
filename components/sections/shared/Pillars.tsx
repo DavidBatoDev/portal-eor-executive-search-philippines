@@ -39,11 +39,13 @@ export function Pillars({
             src={image}
             fill
             alt=""
-            className="object-cover object-center"
+            className="object-cover object-right"
             sizes="52vw"
+            unoptimized
+            priority
           />
           {/* Gradient fade blending photo into white content area */}
-          <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-white to-transparent" />
+          <div className="absolute inset-y-0 left-0 w-40 bg-linear-to-r from-white to-transparent" />
         </div>
 
         <Container>
