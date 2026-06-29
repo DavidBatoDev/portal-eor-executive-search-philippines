@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
@@ -15,6 +16,7 @@ export function AudienceCards({
   cards,
   ctaCard,
   variant = "default",
+  image,
   id = "who",
 }: {
   eyebrow: string;
@@ -23,12 +25,23 @@ export function AudienceCards({
   cards: AudienceCard[];
   ctaCard: CtaCard;
   variant?: "default" | "solo";
+  image?: string;
   id?: string;
 }) {
   const solo = variant === "solo";
   return (
-    <Section id={id} bg="white">
-      <Container>
+    <Section id={id} bg="white" className={image ? "overflow-hidden" : undefined}>
+      {image && (
+        <Image
+          src={image}
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="pointer-events-none select-none object-cover object-left mask-[radial-gradient(circle_at_top_left,black_10%,transparent_60%)]"
+        />
+      )}
+      <Container className={image ? "relative z-1" : undefined}>
         <Reveal>
           <SectionHead center eyebrow={eyebrow} heading={heading} lead={lead} />
         </Reveal>
@@ -70,8 +83,8 @@ export function AudienceCards({
             delay={3}
             className="flex flex-col gap-[.8rem] rounded border border-navy bg-navy p-6 shadow-sm"
           >
-            <h4 className="text-white">{ctaCard.title}</h4>
-            <p className="text-white/70">{ctaCard.body}</p>
+            <h4 className="text-[1.02rem] text-white">{ctaCard.title}</h4>
+            <p className="text-[.9rem] leading-normal text-white/70">{ctaCard.body}</p>
             <LinkArrow href={ctaCard.link.href} className="text-gold-soft">
               {ctaCard.link.label}
             </LinkArrow>
