@@ -13,7 +13,7 @@ export function Hero() {
     >
       <RingWatermark
         circles={[22, 38, 54, 70, 86, 99]}
-        className="left-1/2 top-1/2 h-200 w-200 -translate-x-1/2 -translate-y-1/2 opacity-[0.06]"
+        className="left-1/2 top-1/2 hidden h-200 w-200 -translate-x-1/2 -translate-y-1/2 opacity-[0.06] sm:block"
       />
 
       <Container className="relative z-2 flex flex-col items-center text-center">
