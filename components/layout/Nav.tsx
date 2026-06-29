@@ -18,6 +18,9 @@ export function Nav() {
   // Contact page has a light background from the top — always show the scrolled nav style.
   const scrolled = stickyScrolled || pathname === "/contact" || pathname === "/book-a-meeting";
   const [mobileOpen, setMobileOpen] = useState(false);
+  // Controlled so the dropdown closes on click (hover/focus reopen it) — a pure
+  // CSS hover menu would stay open after navigating to a service.
+  const [servicesOpen, setServicesOpen] = useState(false);
   const {
     links,
     servicesHref,
@@ -57,24 +60,40 @@ export function Nav() {
                 </li>
               )}
               {/* Services mega-dropdown */}
-              <li className="group relative">
+              <li
+                className="relative"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+                onFocus={() => setServicesOpen(true)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                    setServicesOpen(false);
+                  }
+                }}
+              >
                 <Link
                   href={servicesHref}
+                  onClick={() => setServicesOpen(false)}
+                  aria-expanded={servicesOpen}
                   className={cx(linkBase, linkColor, "inline-flex items-center gap-[.34rem]")}
                 >
                   Services
                   <Icon
                     name="caret-down"
                     strokeWidth={2.4}
-                    className="h-2.75 w-2.75 opacity-70"
+                    className={cx(
+                      "h-2.75 w-2.75 opacity-70 transition-transform duration-200",
+                      servicesOpen && "rotate-180"
+                    )}
                   />
                 </Link>
                 <div
                   className={cx(
-                    "invisible absolute left-1/2 top-[calc(100%+14px)] grid w-160 -translate-x-1/2 translate-y-2 grid-cols-2 gap-[.2rem] rounded-[14px] border border-border bg-white p-[.6rem] opacity-0 shadow-lg transition-[opacity,transform] duration-200",
+                    "absolute left-1/2 top-[calc(100%+14px)] grid w-150 -translate-x-1/2 grid-cols-2 gap-[.15rem] rounded-[14px] border border-border bg-white p-2 shadow-lg transition-[opacity,transform] duration-200",
                     "before:absolute before:-top-3.5 before:left-0 before:right-0 before:h-3.5 before:content-['']",
-                    "group-hover:visible group-hover:translate-y-0 group-hover:opacity-100",
-                    "group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100",
+                    servicesOpen
+                      ? "visible translate-y-0 opacity-100"
+                      : "invisible translate-y-2 opacity-0",
                     "max-[1080px]:w-130"
                   )}
                 >
@@ -82,16 +101,17 @@ export function Nav() {
                     <Link
                       key={s.href}
                       href={s.href}
-                      className="flex items-start gap-[.85rem] rounded-sm p-[.7rem_.8rem] transition-colors hover:bg-soft"
+                      onClick={() => setServicesOpen(false)}
+                      className="flex items-start gap-3 rounded-sm p-[.5rem_.7rem] transition-colors hover:bg-soft"
                     >
-                      <span className="grid h-9.5 w-9.5 flex-none place-items-center rounded-[9px] border border-[#f0e3c4] bg-gold-tint text-gold-deep">
-                        <Icon name={s.icon} className="h-4.75 w-4.75" />
+                      <span className="grid h-9 w-9 flex-none place-items-center rounded-[9px] border border-[#f0e3c4] bg-gold-tint text-gold-deep">
+                        <Icon name={s.icon} className="h-4.5 w-4.5" />
                       </span>
                       <span>
-                        <span className="block font-head text-[.96rem] font-bold tracking-[-0.01em] text-navy">
+                        <span className="block font-head text-[.92rem] font-bold tracking-[-0.01em] text-navy">
                           {s.title}
                         </span>
-                        <span className="mt-[.15rem] block text-[.82rem] leading-[1.4] text-body">
+                        <span className="mt-[.1rem] block text-[.8rem] leading-[1.35] text-body">
                           {s.blurb}
                         </span>
                       </span>

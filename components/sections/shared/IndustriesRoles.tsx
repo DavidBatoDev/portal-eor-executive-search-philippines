@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
+import { Button } from "@/components/ui/Button";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { LinkArrow } from "@/components/ui/LinkArrow";
 
@@ -14,13 +15,16 @@ type CtaCard = {
 };
 
 // Coverage grid: each card pairs an industry with a checklist of supported roles.
-// Optional `ctaCard` appends a dark navy call-to-action card at the end.
+// Optional `ctaCard` appends a dark navy call-to-action card at the end;
+// optional `footCta` renders a centered button below the grid.
 export function IndustriesRoles({
   eyebrow,
   heading,
   lead,
   industries,
   ctaCard,
+  footCta,
+  bg = "cream",
   id = "industries",
 }: {
   eyebrow: string;
@@ -28,10 +32,12 @@ export function IndustriesRoles({
   lead?: string;
   industries: Industry[];
   ctaCard?: CtaCard;
+  footCta?: { label: string; href: string };
+  bg?: "cream" | "white";
   id?: string;
 }) {
   return (
-    <Section id={id} bg="cream">
+    <Section id={id} bg={bg}>
       <Container>
         <Reveal>
           <SectionHead center eyebrow={eyebrow} heading={heading} lead={lead} />
@@ -79,6 +85,14 @@ export function IndustriesRoles({
             </Reveal>
           )}
         </div>
+
+        {footCta && (
+          <Reveal className="mt-[clamp(2.5rem,4vw,3.5rem)] flex justify-center">
+            <Button href={footCta.href} variant="ghost-light" arrow>
+              {footCta.label}
+            </Button>
+          </Reveal>
+        )}
       </Container>
     </Section>
   );
