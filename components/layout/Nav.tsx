@@ -15,7 +15,8 @@ import { cx } from "@/lib/cx";
 export function Nav() {
   const scrolled = useStickyNav();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { links, servicesHref, homeHref } = navFor(usePathname());
+  const { links, servicesHref, homeHref, ctaLabel = "Book a Consultation" } =
+    navFor(usePathname());
 
   const linkBase =
     "font-body text-[.96rem] font-medium tracking-[-0.005em] transition-colors";
@@ -104,9 +105,9 @@ export function Nav() {
           <div className="flex items-center gap-[1.1rem]">
             <a
               href="#contact"
-              className="hidden rounded-sm bg-gold px-5 py-[.7rem] font-head text-[.95rem] font-bold text-navy shadow-gold transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 hover:bg-gold-soft lg:inline-flex"
+              className="hidden rounded-sm bg-gold px-5 py-[.7rem] font-head text-[.95rem] font-bold text-navy shadow-gold transition-[transform,translate,box-shadow,background-color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:duration-150 hover:ease-out hover:-translate-y-0.5 hover:bg-gold-soft lg:inline-flex"
             >
-              Book a Consultation
+              {ctaLabel}
             </a>
             <button
               type="button"
@@ -129,6 +130,7 @@ export function Nav() {
         links={links}
         servicesHref={servicesHref}
         homeHref={homeHref}
+        ctaLabel={ctaLabel}
       />
     </>
   );
