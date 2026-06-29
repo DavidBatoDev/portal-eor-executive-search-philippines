@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -6,15 +7,19 @@ import { Icon } from "@/components/ui/Icon";
 import { RingWatermark } from "@/components/ui/RingWatermark";
 import { challenge } from "@/lib/content/home";
 
+const BG_SRC = "/assets/Portal Website Images/portal homepage background image.png";
+
 export function Challenge() {
   return (
     <Section bg="cream" className="overflow-hidden">
-      <RingWatermark
-        circles={[28, 50, 72, 94]}
-        strokeWidth={1.6}
-        dot={11}
-        colorClass="text-navy"
-        className="left-[-14%] top-1/2 h-155 w-155 -translate-y-1/2 opacity-[0.04]"
+      {/* Full-bleed atmospheric backdrop: skyline + silhouettes anchor left, behind the heading. */}
+      <Image
+        src={BG_SRC}
+        alt=""
+        aria-hidden="true"
+        fill
+        sizes="100vw"
+        className="pointer-events-none select-none object-cover object-left opacity-25"
       />
       <Container className="relative z-1">
         <div className="grid items-center gap-[clamp(2rem,4vw,4rem)] lg:grid-cols-[1.15fr_.85fr]">

@@ -2,7 +2,6 @@ import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
-import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { IconFrame } from "@/components/ui/IconFrame";
 import { LinkArrow } from "@/components/ui/LinkArrow";
@@ -35,16 +34,17 @@ export function ServiceGrid() {
               </IconFrame>
               <h3 className="mb-[.7rem]">{c.title}</h3>
               <p className="mb-6 flex-1 text-[.98rem]">{c.body}</p>
-              <LinkArrow href={c.href}>{c.linkLabel}</LinkArrow>
+              {/* Stretched link: the ::before overlay makes the whole card clickable
+                  (anchored to the relative <article>), while keeping one labelled link. */}
+              <LinkArrow
+                href={c.href}
+                className="before:absolute before:inset-0 before:content-['']"
+              >
+                {c.linkLabel}
+              </LinkArrow>
             </Reveal>
           ))}
         </div>
-
-        <Reveal className="mt-[clamp(2.5rem,4vw,3.5rem)] flex justify-center">
-          <Button href={servicesSection.footCta.href} variant="ghost-light" arrow>
-            {servicesSection.footCta.label}
-          </Button>
-        </Reveal>
       </Container>
     </Section>
   );

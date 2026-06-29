@@ -5,10 +5,21 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
 import { team } from "@/lib/content/home";
 
+const BG_SRC = "/assets/Portal Website Images/Shared services page, form section.png";
+
 export function Team() {
   return (
-    <Section id="team" bg="white">
-      <Container>
+    <Section id="team" bg="white" className="overflow-hidden">
+      {/* Full-bleed decorative backdrop: abstract shapes frame the centered heading and cards. */}
+      <Image
+        src={BG_SRC}
+        alt=""
+        aria-hidden="true"
+        fill
+        sizes="100vw"
+        className="pointer-events-none select-none object-cover"
+      />
+      <Container className="relative z-1">
         <Reveal>
           <SectionHead center eyebrow={team.eyebrow} heading={team.heading} lead={team.lead} />
         </Reveal>
