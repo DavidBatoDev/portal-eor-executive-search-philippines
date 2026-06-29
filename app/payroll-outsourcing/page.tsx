@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ServiceHero } from "@/components/sections/shared/ServiceHero";
 import { PainPoints } from "@/components/sections/shared/PainPoints";
-import { ServiceUseCards } from "@/components/sections/shared/ServiceUseCards";
+import { Pillars } from "@/components/sections/shared/Pillars";
 import { ProcessSteps } from "@/components/sections/shared/ProcessSteps";
 import { AudienceCards } from "@/components/sections/shared/AudienceCards";
 import { HiresMarquee } from "@/components/sections/shared/HiresMarquee";
@@ -11,22 +11,22 @@ import {
   meta,
   hero,
   painPoints,
-  useCards,
+  whyChoose,
   process,
   whoFor,
-  hires,
+  wins,
   faq,
   finalCta,
-} from "@/lib/content/eor";
+} from "@/lib/content/payroll-outsourcing";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: meta.title,
   description: meta.description,
-  path: "/eor",
+  path: "/payroll-outsourcing",
 });
 
-export default function EorPage() {
+export default function PayrollOutsourcingPage() {
   return (
     <main>
       <ServiceHero
@@ -42,14 +42,15 @@ export default function EorPage() {
         intro={painPoints.intro}
         items={painPoints.items}
         solution={painPoints.solution}
+        image={painPoints.image}
       />
-      <ServiceUseCards
-        eyebrow={useCards.eyebrow}
-        heading={useCards.heading}
-        lead={useCards.lead}
-        cards={useCards.cards}
-        ctaCard={useCards.ctaCard}
-        footCta={useCards.footCta}
+      <Pillars
+        eyebrow={whyChoose.eyebrow}
+        heading={whyChoose.heading}
+        lead={whyChoose.lead}
+        pillars={whyChoose.pillars}
+        cols={5}
+        surface="cream"
       />
       <ProcessSteps
         eyebrow={process.eyebrow}
@@ -62,12 +63,13 @@ export default function EorPage() {
         lead={whoFor.lead}
         cards={whoFor.cards}
         ctaCard={whoFor.ctaCard}
+        image={whoFor.image}
       />
       <HiresMarquee
-        eyebrow={hires.eyebrow}
-        heading={hires.heading}
-        hint={hires.hint}
-        cards={hires.cards}
+        eyebrow={wins.eyebrow}
+        heading={wins.heading}
+        hint={wins.hint}
+        cards={wins.cards}
       />
       <Faq eyebrow={faq.eyebrow} heading={faq.heading} lead={faq.lead} items={faq.items} bg="white" />
       <FinalCta

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -20,6 +21,7 @@ export function PainPoints({
   intro,
   items,
   solution,
+  image,
   id = "challenges",
 }: {
   eyebrow: string;
@@ -27,19 +29,30 @@ export function PainPoints({
   intro: string;
   items: PainItem[];
   solution: Solution;
+  image?: string;
   id?: string;
 }) {
   return (
-    <Section id={id} bg="white">
-      <Container>
+    <Section id={id} bg={image ? "cream" : "white"} className={image ? "overflow-hidden" : undefined}>
+      {image && (
+        <Image
+          src={image}
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="pointer-events-none select-none object-cover object-right opacity-50"
+        />
+      )}
+      <Container className={image ? "relative z-1" : undefined}>
         <Reveal className="max-w-190">
           <Eyebrow className="mb-[1.1rem]">{eyebrow}</Eyebrow>
           <h2>{heading}</h2>
           <p className="mt-[1.2rem] max-w-[60ch] text-[1.08rem]">{intro}</p>
         </Reveal>
 
-        <div className="mt-[2.6rem] grid items-start gap-[clamp(2rem,4vw,3.5rem)] lg:grid-cols-[1.18fr_.82fr]">
-          <div className="flex flex-col gap-[.9rem]">
+        <div className="mt-[2.6rem] grid items-stretch gap-[clamp(2rem,4vw,3.5rem)] lg:grid-cols-[1.18fr_.82fr]">
+          <div className="flex flex-col justify-between gap-[.9rem]">
             {items.map((item) => (
               <Reveal
                 key={item.title}
@@ -58,7 +71,7 @@ export function PainPoints({
 
           <Reveal
             delay={1}
-            className="relative overflow-hidden rounded-lg border border-gold/28 bg-[linear-gradient(155deg,#16223c,#101828)] p-[clamp(1.8rem,3vw,2.6rem)] shadow-lg lg:sticky lg:top-24"
+            className="relative flex flex-col justify-between overflow-hidden rounded-lg border border-gold/28 bg-[linear-gradient(155deg,#16223c,#101828)] p-[clamp(1.8rem,3vw,2.6rem)] shadow-lg lg:sticky lg:top-24"
           >
             <RingWatermark
               circles={[30, 55, 80, 99]}
@@ -66,23 +79,25 @@ export function PainPoints({
               dot={12}
               className="right-[-22%] top-[-30%] h-80 w-80 opacity-10"
             />
-            <span className="relative z-1 mb-[1.1rem] inline-flex items-center gap-2 font-head text-[.72rem] font-bold uppercase tracking-[.12em] text-gold-soft">
-              <Icon name="shield-check" strokeWidth={1.8} className="h-4 w-4 text-gold" />
-              {solution.tag}
-            </span>
-            <p className="relative z-1 font-head text-[clamp(1.15rem,1rem+.7vw,1.45rem)] font-bold leading-[1.4] tracking-[-0.015em] text-white">
-              {solution.body}
-            </p>
-            <div className="relative z-1 mt-[1.6rem] flex flex-col gap-[.6rem]">
-              {solution.chips.map((chip) => (
-                <span
-                  key={chip}
-                  className="flex items-center gap-[.7rem] rounded-[11px] border border-gold/24 bg-gold/10 p-[.6rem_.9rem] font-head text-[.86rem] font-semibold text-gold-soft"
-                >
-                  <Icon name="check-circle" strokeWidth={1.8} className="h-4.5 w-4.5 flex-none text-gold" />
-                  {chip}
-                </span>
-              ))}
+            <div className="relative z-1">
+              <span className="mb-[1.1rem] inline-flex items-center gap-2 font-head text-[.72rem] font-bold uppercase tracking-[.12em] text-gold-soft">
+                <Icon name="shield-check" strokeWidth={1.8} className="h-4 w-4 text-gold" />
+                {solution.tag}
+              </span>
+              <p className="font-head text-[clamp(1.15rem,1rem+.7vw,1.45rem)] font-bold leading-[1.4] tracking-[-0.015em] text-white">
+                {solution.body}
+              </p>
+              <div className="mt-[1.6rem] flex flex-col gap-[.6rem]">
+                {solution.chips.map((chip) => (
+                  <span
+                    key={chip}
+                    className="flex items-center gap-[.7rem] rounded-[11px] border border-gold/24 bg-gold/10 p-[.6rem_.9rem] font-head text-[.86rem] font-semibold text-gold-soft"
+                  >
+                    <Icon name="check-circle" strokeWidth={1.8} className="h-4.5 w-4.5 flex-none text-gold" />
+                    {chip}
+                  </span>
+                ))}
+              </div>
             </div>
             <div className="relative z-1 mt-[1.6rem] border-t border-gold/22 pt-[1.4rem]">
               <Button href={solution.cta.href} variant="primary" arrow className="w-full">
