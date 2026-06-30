@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { ServiceHero } from "@/components/sections/shared/ServiceHero";
 import { PainPoints } from "@/components/sections/shared/PainPoints";
 import { Pillars } from "@/components/sections/shared/Pillars";
@@ -28,9 +27,6 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function PayrollOutsourcingPage() {
-  // Temporarily hidden from the client — remove this line to re-enable the page.
-  notFound();
-
   return (
     <main>
       <ServiceHero
