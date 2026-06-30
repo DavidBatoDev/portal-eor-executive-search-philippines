@@ -317,6 +317,6 @@ export const finalCta = {
   eyebrow: "Let's talk",
   heading: "Start Scaling Your Teams with Confidence",
   lead: "Book a consultation to deploy skilled, compliant, and ready-to-work teams with Portal's manpower solutions.",
-  primaryCta: { label: "Book a Meeting", href: "#contact" },
+  primaryCta: { label: "Book a Meeting", href: "/book-a-meeting" },
   secondaryCta: { label: "View Our Services", href: "/#services" },
 };

@@ -24,7 +24,6 @@ export function Nav() {
   const {
     links,
     servicesHref,
-    homeHref,
     ctaLabel = "Book a Meeting",
     ctaHref = "/book-a-meeting",
   } = navFor(pathname);
@@ -52,13 +51,6 @@ export function Nav() {
 
           <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center gap-8">
-              {homeHref && (
-                <li>
-                  <Link href={homeHref} className={cx(linkBase, linkColor)}>
-                    Home
-                  </Link>
-                </li>
-              )}
               {/* Services mega-dropdown */}
               <li
                 className="relative"
@@ -157,7 +149,6 @@ export function Nav() {
         onClose={() => setMobileOpen(false)}
         links={links}
         servicesHref={servicesHref}
-        homeHref={homeHref}
         ctaLabel={ctaLabel}
         ctaHref={ctaHref}
       />

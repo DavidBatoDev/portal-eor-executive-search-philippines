@@ -242,6 +242,6 @@ export const finalCta = {
   eyebrow: "Let's talk",
   heading: "Optimize Your Operations Today",
   lead: "Book a consultation to deploy skilled, compliant, and ready-to-work teams through Portal's Shared Services.",
-  primaryCta: { label: "Book a Meeting", href: "#contact" },
+  primaryCta: { label: "Book a Meeting", href: "/book-a-meeting" },
   secondaryCta: { label: "View Our Services", href: "/#services" },
 };

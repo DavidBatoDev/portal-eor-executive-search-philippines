@@ -10,7 +10,6 @@ export function MobileMenu({
   onClose,
   links,
   servicesHref,
-  homeHref,
   ctaLabel = "Book a Consultation",
   ctaHref = "#contact",
 }: {
@@ -18,7 +17,6 @@ export function MobileMenu({
   onClose: () => void;
   links: NavLink[];
   servicesHref: string;
-  homeHref?: string;
   ctaLabel?: string;
   ctaHref?: string;
 }) {
@@ -30,11 +28,7 @@ export function MobileMenu({
     };
   }, [open]);
 
-  const items = [
-    ...(homeHref ? [{ label: "Home", href: homeHref }] : []),
-    { label: "Services", href: servicesHref },
-    ...links,
-  ];
+  const items = [{ label: "Services", href: servicesHref }, ...links];
 
   return (
     <div

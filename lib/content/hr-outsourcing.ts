@@ -233,6 +233,6 @@ export const finalCta = {
   eyebrow: "Let's talk",
   heading: "Streamline Your HR Operations Today",
   lead: "Book a consultation to delegate HR operations to Portal's experienced, compliant, and flexible HR teams.",
-  primaryCta: { label: "Book a Meeting", href: "#contact" },
+  primaryCta: { label: "Book a Meeting", href: "/book-a-meeting" },
   secondaryCta: { label: "View Our Services", href: "/#services" },
 };

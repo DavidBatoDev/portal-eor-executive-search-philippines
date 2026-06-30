@@ -230,6 +230,6 @@ export const finalCta = {
   eyebrow: "Let's talk",
   heading: "Simplify Your Payroll Today",
   lead: "Book a consultation to outsource payroll with compliance-first processes, proprietary systems, and nationwide support.",
-  primaryCta: { label: "Book Consultation", href: "#contact" },
-  secondaryCta: { label: "Request Assessment", href: "#contact" },
+  primaryCta: { label: "Book Consultation", href: "/book-a-meeting" },
+  secondaryCta: { label: "Request Assessment", href: "/contact" },
 };

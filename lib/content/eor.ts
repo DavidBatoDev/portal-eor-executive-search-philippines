@@ -246,6 +246,6 @@ export const finalCta = {
   eyebrow: "Let's talk",
   heading: "Start Employing Talent in the Philippines with Confidence",
   lead: "Book a consultation to get started with Portal's compliance-first EOR services.",
-  primaryCta: { label: "Book Consultation", href: "#contact" },
-  secondaryCta: { label: "Request Assessment", href: "#contact" },
+  primaryCta: { label: "Book Consultation", href: "/book-a-meeting" },
+  secondaryCta: { label: "Request Assessment", href: "/contact" },
 };
