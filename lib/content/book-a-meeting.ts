@@ -16,9 +16,34 @@ export const hero = {
 export const form = {
   heading: "Schedule Your Call",
   subtitle:
-    "Fill out the form below and our representative will reach out at your preferred time.",
+    "Pick a weekday and time that works — our team will confirm by email.",
   confirmNote: "We will contact you to confirm your meeting.",
   submitLabel: "Book a Meeting",
+  submittingLabel: "Sending…",
+  // Preferred-time options (PH business hours, lunch break omitted).
+  timeSlots: [
+    "9:00 AM",
+    "9:30 AM",
+    "10:00 AM",
+    "10:30 AM",
+    "11:00 AM",
+    "11:30 AM",
+    "1:00 PM",
+    "1:30 PM",
+    "2:00 PM",
+    "2:30 PM",
+    "3:00 PM",
+    "3:30 PM",
+    "4:00 PM",
+    "4:30 PM",
+    "I'm flexible",
+  ],
+  success: {
+    title: "Thanks — your meeting request is in.",
+    message:
+      "We'll email you within one business day to confirm your preferred day and time.",
+    action: { label: "Back to home", href: "/" },
+  },
 };
 
 export const whyBook = {

@@ -5,7 +5,6 @@ import { BusinessImpact } from "@/components/sections/hr-outsourcing/BusinessImp
 import { ServiceUseCards } from "@/components/sections/shared/ServiceUseCards";
 import { ProcessSteps } from "@/components/sections/shared/ProcessSteps";
 import { AudienceCards } from "@/components/sections/shared/AudienceCards";
-import { InquiryForm } from "@/components/sections/shared/InquiryForm";
 import { IndustriesRoles } from "@/components/sections/shared/IndustriesRoles";
 import { Faq } from "@/components/sections/shared/Faq";
 import { FinalCta } from "@/components/sections/shared/FinalCta";
@@ -17,7 +16,6 @@ import {
   capabilities,
   process,
   whoFor,
-  inquiry,
   industries,
   faq,
   finalCta,
@@ -75,14 +73,6 @@ export default function HrOutsourcingPage() {
         ctaCard={whoFor.ctaCard}
         image={whoFor.image}
         imageClassName="opacity-25"
-      />
-      <InquiryForm
-        eyebrow={inquiry.eyebrow}
-        heading={inquiry.heading}
-        formTitle={inquiry.formTitle}
-        bg="cream"
-        notesLabel={inquiry.notesLabel}
-        notesPlaceholder={inquiry.notesPlaceholder}
       />
       <IndustriesRoles
         eyebrow={industries.eyebrow}

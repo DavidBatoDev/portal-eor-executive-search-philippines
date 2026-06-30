@@ -19,7 +19,7 @@ export const hero = {
   titlePre: "BPO-Lite Services",
   lead: "Portal provides lean and compliant back-office operations for companies that need scalable, temporary, or project-specific support.",
   ctas: {
-    primary: { label: "Submit an Inquiry", href: "#inquiry" },
+    primary: { label: "Submit an Inquiry", href: "#contact" },
     secondary: { label: "Book a Consultation", href: "#contact" },
   },
 };
@@ -184,7 +184,7 @@ export const industries = {
     icon: "search" as IconName,
     title: "Can't find your function?",
     body: "We support more back-office functions than we can list here. Tell us what your operation needs and our consultants will let you know how Portal can help.",
-    link: { label: "Submit an inquiry", href: "#inquiry" },
+    link: { label: "Submit an inquiry", href: "#contact" },
   },
   items: [
     {
@@ -263,5 +263,5 @@ export const finalCta = {
   heading: "Start Scaling Your Teams with Confidence",
   lead: "Book a consultation to deploy skilled, compliant, and ready-to-work teams.",
   primaryCta: { label: "Book a Meeting", href: "/book-a-meeting" },
-  secondaryCta: { label: "View Our Services", href: "/#services" },
+  secondaryCta: { label: "Submit an Inquiry", href: "/contact" },
 };

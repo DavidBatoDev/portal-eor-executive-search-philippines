@@ -20,6 +20,9 @@ const config: Config = {
         "gold-tint": "#FBF4E2",
         "teal-tint": "#EAF3F2",
         "copper-tint": "#F6EDE4",
+        // form validation / error states
+        danger: "#B42318",
+        "danger-tint": "#FEF3F2",
       },
       fontFamily: {
         head: ["var(--font-manrope)", "system-ui", "sans-serif"],

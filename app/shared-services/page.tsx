@@ -5,7 +5,6 @@ import { ServiceUseCards } from "@/components/sections/shared/ServiceUseCards";
 import { ProcessSteps } from "@/components/sections/shared/ProcessSteps";
 import { UseCaseCards } from "@/components/sections/shared/UseCaseCards";
 import { HiresMarquee } from "@/components/sections/shared/HiresMarquee";
-import { InquiryForm } from "@/components/sections/shared/InquiryForm";
 import { IndustriesRoles } from "@/components/sections/shared/IndustriesRoles";
 import { Faq } from "@/components/sections/shared/Faq";
 import { FinalCta } from "@/components/sections/shared/FinalCta";
@@ -17,7 +16,6 @@ import {
   process,
   whoFor,
   wins,
-  inquiry,
   industries,
   faq,
   finalCta,
@@ -71,11 +69,6 @@ export default function SharedServicesPage() {
         heading={wins.heading}
         hint={wins.hint}
         cards={wins.cards}
-      />
-      <InquiryForm
-        eyebrow={inquiry.eyebrow}
-        heading={inquiry.heading}
-        formTitle={inquiry.formTitle}
       />
       <IndustriesRoles
         id="industries"

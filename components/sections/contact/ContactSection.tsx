@@ -1,31 +1,37 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
-import { Dropdown } from "@/components/ui/Dropdown";
 import { RingWatermark } from "@/components/ui/RingWatermark";
+import { TextField } from "@/components/forms/TextField";
+import { PhoneField } from "@/components/forms/PhoneField";
+import { SelectField } from "@/components/forms/SelectField";
+import { TextAreaField } from "@/components/forms/TextAreaField";
+import { SubmitButton } from "@/components/forms/SubmitButton";
+import { FormSuccess } from "@/components/forms/FormSuccess";
+import { useFormState } from "@/hooks/useFormState";
+import { required, email, phPhone, type Rules } from "@/lib/forms/validation";
 import { contact, form, SERVICE_OPTIONS } from "@/lib/content/contact";
 
-const fieldClass =
-  "w-full rounded-md border border-[#e9dfc9] bg-cream px-4 py-3 font-body text-[.98rem] text-charcoal outline-none transition-[border-color,box-shadow] placeholder:text-body/55 focus:border-gold/60 focus:shadow-[0_0_0_3px_rgba(217,164,55,.14)]";
-const labelClass = "block font-head text-[.9rem] font-semibold text-navy";
+const INITIAL = {
+  company: "",
+  person: "",
+  email: "",
+  mobile: "",
+  service: "",
+  message: "",
+};
 
-const SUCCESS = (
-  <div className="flex items-start gap-3 rounded-md border border-gold/40 bg-gold-tint p-5">
-    <Icon name="check-circle" className="h-6 w-6 flex-none text-gold-deep" />
-    <div>
-      <p className="font-head font-bold text-navy">
-        Thank you — your inquiry has been received.
-      </p>
-      <p className="mt-1 text-[.95rem] text-body">
-        Our team will reach out to you as soon as possible.
-      </p>
-    </div>
-  </div>
-);
+const RULES: Rules = {
+  company: [required("Please enter your company name.")],
+  person: [required("Please enter your name.")],
+  email: [required("Please enter your email."), email()],
+  // Mobile is optional, but if provided it must be a valid PH number.
+  mobile: [phPhone()],
+  service: [required("Please select a service.")],
+};
 
 const CONTACT_ITEMS = [
   {
@@ -55,9 +61,7 @@ const CONTACT_ITEMS = [
   {
     icon: "map-pin" as const,
     label: contact.address.label,
-    primary: (
-      <p className="font-medium text-navy">{contact.address.primary}</p>
-    ),
+    primary: <p className="font-medium text-navy">{contact.address.primary}</p>,
     secondary: contact.address.secondary,
   },
   {
@@ -69,12 +73,13 @@ const CONTACT_ITEMS = [
 ];
 
 export function ContactSection() {
-  const [sent, setSent] = useState(false);
-
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    setSent(true);
-  }
+  const { values, errors, submitting, submitted, setValue, handleBlur, handleSubmit, formRef } =
+    useFormState({
+      initial: INITIAL,
+      rules: RULES,
+      // UX-only: simulate a network round-trip so the busy state is visible.
+      onSubmit: () => new Promise((resolve) => setTimeout(resolve, 700)),
+    });
 
   return (
     <section
@@ -141,108 +146,99 @@ export function ContactSection() {
               </h2>
               <p className="mt-[.4rem] text-[.96rem] text-body">{form.subtitle}</p>
 
-              {sent ? (
-                <div className="mt-7">{SUCCESS}</div>
+              {submitted ? (
+                <div className="mt-7">
+                  <FormSuccess
+                    title={form.success.title}
+                    message={form.success.message}
+                    action={form.success.action}
+                  />
+                </div>
               ) : (
                 <form
+                  ref={formRef}
                   onSubmit={handleSubmit}
+                  noValidate
                   aria-label="Inquiry form"
                   className="mt-7 flex flex-col gap-5"
                 >
                   <div className="grid gap-5 sm:grid-cols-2">
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="c-company" className={labelClass}>
-                        Company Name <span className="text-gold-deep">*</span>
-                      </label>
-                      <input
-                        id="c-company"
-                        name="company"
-                        type="text"
-                        placeholder="Your company"
-                        autoComplete="organization"
-                        required
-                        className={fieldClass}
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="c-person" className={labelClass}>
-                        Contact Person <span className="text-gold-deep">*</span>
-                      </label>
-                      <input
-                        id="c-person"
-                        name="person"
-                        type="text"
-                        placeholder="Full name"
-                        autoComplete="name"
-                        required
-                        className={fieldClass}
-                      />
-                    </div>
+                    <TextField
+                      name="company"
+                      label="Company Name"
+                      required
+                      placeholder="Your company"
+                      autoComplete="organization"
+                      value={values.company}
+                      error={errors.company}
+                      onChange={setValue}
+                      onBlur={handleBlur}
+                    />
+                    <TextField
+                      name="person"
+                      label="Contact Person"
+                      required
+                      placeholder="Full name"
+                      autoComplete="name"
+                      value={values.person}
+                      error={errors.person}
+                      onChange={setValue}
+                      onBlur={handleBlur}
+                    />
                   </div>
 
                   <div className="grid gap-5 sm:grid-cols-2">
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="c-email" className={labelClass}>
-                        Email Address <span className="text-gold-deep">*</span>
-                      </label>
-                      <input
-                        id="c-email"
-                        name="email"
-                        type="email"
-                        placeholder="you@company.com"
-                        autoComplete="email"
-                        required
-                        className={fieldClass}
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="c-mobile" className={labelClass}>
-                        Mobile Number <span className="text-gold-deep">*</span>
-                      </label>
-                      <input
-                        id="c-mobile"
-                        name="mobile"
-                        type="tel"
-                        placeholder="+63 9XX XXX XXXX"
-                        autoComplete="tel"
-                        required
-                        className={fieldClass}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="c-service" className={labelClass}>
-                      Service Needed <span className="text-gold-deep">*</span>
-                    </label>
-                    <Dropdown
-                      id="c-service"
-                      name="service"
-                      options={SERVICE_OPTIONS}
-                      placeholder="Select a service"
+                    <TextField
+                      name="email"
+                      label="Email Address"
+                      type="email"
+                      inputMode="email"
+                      required
+                      placeholder="you@company.com"
+                      autoComplete="email"
+                      value={values.email}
+                      error={errors.email}
+                      onChange={setValue}
+                      onBlur={handleBlur}
+                    />
+                    <PhoneField
+                      name="mobile"
+                      label="Mobile Number"
+                      optional
+                      value={values.mobile}
+                      error={errors.mobile}
+                      onChange={setValue}
+                      onBlur={handleBlur}
                     />
                   </div>
 
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="c-message" className={labelClass}>
-                      Message
-                    </label>
-                    <textarea
-                      id="c-message"
-                      name="message"
-                      rows={4}
-                      placeholder="Tell us about your requirements…"
-                      className={`${fieldClass} resize-y`}
-                    />
-                  </div>
+                  <SelectField
+                    name="service"
+                    label="Service Needed"
+                    required
+                    placeholder="Select a service"
+                    options={SERVICE_OPTIONS}
+                    value={values.service}
+                    error={errors.service}
+                    onChange={setValue}
+                    onBlur={handleBlur}
+                  />
 
-                  <button
-                    type="submit"
-                    className="mt-1 inline-flex w-full items-center justify-center gap-[.6rem] rounded-md bg-gold px-[1.6rem] py-[.95rem] font-head font-bold text-navy shadow-gold transition-[transform,translate,box-shadow,background-color] duration-200 ease-in-out hover:duration-150 hover:ease-out hover:-translate-y-0.5 hover:bg-gold-soft"
-                  >
-                    Send Inquiry
-                    <Icon name="arrow-right" strokeWidth={2.2} className="h-4.5 w-4.5" />
-                  </button>
+                  <TextAreaField
+                    name="message"
+                    label="Message"
+                    optional
+                    placeholder="Tell us about your requirements…"
+                    value={values.message}
+                    onChange={setValue}
+                    onBlur={handleBlur}
+                  />
+
+                  <SubmitButton
+                    label={form.submitLabel}
+                    submittingLabel={form.submittingLabel}
+                    submitting={submitting}
+                  />
                 </form>
               )}
             </div>

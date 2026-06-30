@@ -5,7 +5,6 @@ import { ServiceUseCards } from "@/components/sections/shared/ServiceUseCards";
 import { ProcessSteps } from "@/components/sections/shared/ProcessSteps";
 import { AudienceCards } from "@/components/sections/shared/AudienceCards";
 import { HiresMarquee } from "@/components/sections/shared/HiresMarquee";
-import { Worksheet } from "@/components/sections/manpower-solutions/Worksheet";
 import { IndustriesRoles } from "@/components/sections/manpower-solutions/IndustriesRoles";
 import { Faq } from "@/components/sections/shared/Faq";
 import { FinalCta } from "@/components/sections/shared/FinalCta";
@@ -17,7 +16,6 @@ import {
   process,
   whoFor,
   hires,
-  worksheet,
   industries,
   faq,
   finalCta,
@@ -74,7 +72,6 @@ export default function ManpowerSolutionsPage() {
         hint={hires.hint}
         cards={hires.cards}
       />
-      <Worksheet content={worksheet} />
       <IndustriesRoles
         eyebrow={industries.eyebrow}
         heading={industries.heading}

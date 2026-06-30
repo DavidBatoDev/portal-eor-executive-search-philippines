@@ -273,5 +273,5 @@ export const finalCta = {
   heading: "Find the Leaders Who Will Drive Your Growth",
   lead: "Book a consultation to start your Executive Search with Portal's market expertise, structured process, and nationwide reach.",
   primaryCta: { label: "Book a Meeting", href: "/book-a-meeting" },
-  secondaryCta: { label: "Request Assessment", href: "/contact" },
+  secondaryCta: { label: "Submit an Inquiry", href: "/contact" },
 };

@@ -19,7 +19,7 @@ export const hero = {
   titlePre: "HR Outsourcing",
   lead: "Portal helps companies manage HR processes efficiently and compliantly using our proprietary HRIS and Payroll System, allowing internal teams to focus on strategic priorities while we handle day-to-day HR administration.",
   ctas: {
-    primary: { label: "Submit an Inquiry", href: "#inquiry" },
+    primary: { label: "Submit an Inquiry", href: "#contact" },
     secondary: { label: "Book a Consultation", href: "#contact" },
   },
 };
@@ -151,7 +151,7 @@ export const whoFor = {
   ctaCard: {
     title: "Cannot find your desired HR solution?",
     body: "Submit an inquiry today. We'll reach out to you ASAP.",
-    link: { label: "Submit an inquiry", href: "#inquiry" },
+    link: { label: "Submit an inquiry", href: "#contact" },
   },
 };
 
@@ -234,5 +234,5 @@ export const finalCta = {
   heading: "Streamline Your HR Operations Today",
   lead: "Book a consultation to delegate HR operations to Portal's experienced, compliant, and flexible HR teams.",
   primaryCta: { label: "Book a Meeting", href: "/book-a-meeting" },
-  secondaryCta: { label: "View Our Services", href: "/#services" },
+  secondaryCta: { label: "Submit an Inquiry", href: "/contact" },
 };

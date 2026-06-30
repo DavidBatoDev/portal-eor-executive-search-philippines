@@ -89,18 +89,36 @@ export function Nav() {
                     "max-[1080px]:w-130"
                   )}
                 >
-                  {services.map((s) => (
+                  {services.map((s) => {
+                    const active = pathname === s.href;
+                    return (
                     <Link
                       key={s.href}
                       href={s.href}
                       onClick={() => setServicesOpen(false)}
-                      className="flex items-start gap-3 rounded-sm p-[.5rem_.7rem] transition-colors hover:bg-soft"
+                      aria-current={active ? "page" : undefined}
+                      className={cx(
+                        "flex items-start gap-3 rounded-sm p-[.5rem_.7rem] transition-colors",
+                        active ? "bg-gold-tint" : "hover:bg-soft"
+                      )}
                     >
-                      <span className="grid h-9 w-9 flex-none place-items-center rounded-[9px] border border-[#f0e3c4] bg-gold-tint text-gold-deep">
+                      <span
+                        className={cx(
+                          "grid h-9 w-9 flex-none place-items-center rounded-[9px] border",
+                          active
+                            ? "border-gold bg-gold text-navy"
+                            : "border-[#f0e3c4] bg-gold-tint text-gold-deep"
+                        )}
+                      >
                         <Icon name={s.icon} className="h-4.5 w-4.5" />
                       </span>
                       <span>
-                        <span className="block font-head text-[.92rem] font-bold tracking-[-0.01em] text-navy">
+                        <span
+                          className={cx(
+                            "block font-head text-[.92rem] font-bold tracking-[-0.01em]",
+                            active ? "text-gold-deep" : "text-navy"
+                          )}
+                        >
                           {s.title}
                         </span>
                         <span className="mt-[.1rem] block text-[.8rem] leading-[1.35] text-body">
@@ -108,7 +126,8 @@ export function Nav() {
                         </span>
                       </span>
                     </Link>
-                  ))}
+                    );
+                  })}
                 </div>
               </li>
 

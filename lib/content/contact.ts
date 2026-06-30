@@ -39,6 +39,13 @@ export const contact = {
 export const form = {
   heading: "Send an Inquiry",
   subtitle: "Fill out the form and our team will respond promptly.",
+  submitLabel: "Send Inquiry",
+  submittingLabel: "Sending…",
+  success: {
+    title: "Thank you — your inquiry has been received.",
+    message: "Our team will reach out to you as soon as possible.",
+    action: { label: "Prefer to book a meeting?", href: "/book-a-meeting" },
+  },
 };
 
 export const SERVICE_OPTIONS = [

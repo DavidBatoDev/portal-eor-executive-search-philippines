@@ -18,19 +18,27 @@ export function Dropdown({
   value: controlledValue,
   defaultValue = "",
   onChange,
+  onBlur,
   placeholder = "Select an option",
   name,
   id,
   className,
+  invalid,
+  required,
+  describedById,
 }: {
   options: Option[];
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
+  onBlur?: () => void;
   placeholder?: string;
   name?: string;
   id?: string;
   className?: string;
+  invalid?: boolean;
+  required?: boolean;
+  describedById?: string;
 }) {
   const items = options.map((o) =>
     typeof o === "string" ? { label: o, value: o } : o
@@ -128,14 +136,20 @@ export function Dropdown({
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
+        aria-invalid={invalid || undefined}
+        aria-required={required || undefined}
+        aria-describedby={describedById}
         onClick={() => (open ? setOpen(false) : openMenu())}
         onKeyDown={onKeyDown}
+        onBlur={() => onBlur?.()}
         className={cx(
           "flex w-full items-center justify-between gap-2 rounded-[11px] border bg-soft px-[1rem] py-[.85rem] text-left font-body text-[.96rem] outline-none transition-[border-color,box-shadow] duration-200",
           open
             ? "border-gold/60 shadow-[0_0_0_4px_rgba(217,164,55,.14)]"
-            : "border-border",
-          selected ? "text-charcoal" : "text-body/70"
+            : invalid
+              ? "border-danger"
+              : "border-border",
+          selected ? "text-charcoal" : "text-body"
         )}
       >
         <span className="truncate">{selected ? selected.label : placeholder}</span>

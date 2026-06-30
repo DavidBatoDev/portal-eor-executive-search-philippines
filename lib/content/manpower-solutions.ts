@@ -19,7 +19,7 @@ export const hero = {
   titlePre: "Manpower Solutions",
   lead: "Portal provides structured workforce support across the Philippines and internationally. Scale your operations, project teams, or temporary staffing needs with our compliance-first manpower services.",
   ctas: {
-    primary: { label: "Submit an Inquiry", href: "#worksheet" },
+    primary: { label: "Submit an Inquiry", href: "#contact" },
     secondary: { label: "Book a Consultation", href: "#contact" },
   },
 };
@@ -281,7 +281,7 @@ export const industries = {
     icon: "search-plus" as IconName,
     title: "Can't find your industry?",
     body: "We deploy skilled teams across far more sectors than we can list here. Tell us what your operation needs and our workforce consultants will let you know how Portal can help.",
-    link: { label: "Submit an inquiry", href: "#worksheet" },
+    link: { label: "Submit an inquiry", href: "#contact" },
   },
 };
 
@@ -318,5 +318,5 @@ export const finalCta = {
   heading: "Start Scaling Your Teams with Confidence",
   lead: "Book a consultation to deploy skilled, compliant, and ready-to-work teams with Portal's manpower solutions.",
   primaryCta: { label: "Book a Meeting", href: "/book-a-meeting" },
-  secondaryCta: { label: "View Our Services", href: "/#services" },
+  secondaryCta: { label: "Submit an Inquiry", href: "/contact" },
 };

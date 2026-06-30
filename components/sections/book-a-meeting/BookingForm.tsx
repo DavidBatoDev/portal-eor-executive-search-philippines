@@ -1,40 +1,60 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
+import { TextField } from "@/components/forms/TextField";
+import { PhoneField } from "@/components/forms/PhoneField";
+import { DateField } from "@/components/forms/DateField";
+import { SelectField } from "@/components/forms/SelectField";
+import { TextAreaField } from "@/components/forms/TextAreaField";
+import { SubmitButton } from "@/components/forms/SubmitButton";
+import { FormSuccess } from "@/components/forms/FormSuccess";
+import { useFormState } from "@/hooks/useFormState";
+import {
+  required,
+  email,
+  phPhone,
+  weekdayDate,
+  todayISO,
+  type Rules,
+} from "@/lib/forms/validation";
 import { form } from "@/lib/content/book-a-meeting";
 
-const fieldClass =
-  "w-full rounded-md border border-[#e9dfc9] bg-cream px-4 py-3 font-body text-[.98rem] text-charcoal outline-none transition-[border-color,box-shadow] placeholder:text-body/55 focus:border-gold/60 focus:shadow-[0_0_0_3px_rgba(217,164,55,.14)]";
-const labelClass = "block font-head text-[.9rem] font-semibold text-navy";
+const INITIAL = {
+  name: "",
+  email: "",
+  phone: "",
+  date: "",
+  time: "",
+  message: "",
+};
 
-const SUCCESS = (
-  <div className="flex items-start gap-3 rounded-md border border-gold/40 bg-gold-tint p-5">
-    <Icon name="check-circle" className="h-6 w-6 flex-none text-gold-deep" />
-    <div>
-      <p className="font-head font-bold text-navy">
-        Thank you — your meeting request has been received.
-      </p>
-      <p className="mt-1 text-[.95rem] text-body">
-        Our team will contact you to confirm your preferred time.
-      </p>
-    </div>
-  </div>
-);
+const RULES: Rules = {
+  name: [required("Please enter your name.")],
+  email: [required("Please enter your email."), email()],
+  phone: [required("Please enter your phone number."), phPhone()],
+  date: [required("Please choose a date."), weekdayDate()],
+  time: [required("Please choose a time.")],
+};
 
 export function BookingForm() {
-  const [sent, setSent] = useState(false);
+  const { values, errors, submitting, submitted, setValue, handleBlur, handleSubmit, formRef } =
+    useFormState({
+      initial: INITIAL,
+      rules: RULES,
+      // UX-only: simulate a network round-trip so the busy state is visible.
+      onSubmit: () => new Promise((resolve) => setTimeout(resolve, 700)),
+    });
 
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    setSent(true);
-  }
+  // Floor the date picker at today, set after mount to avoid hydration mismatch.
+  const [minDate, setMinDate] = useState<string | undefined>(undefined);
+  useEffect(() => setMinDate(todayISO()), []);
 
   return (
     <section id="schedule" className="bg-white py-[clamp(4rem,3rem+4vw,7rem)]">
-      <Container className="max-w-[780px]">
+      <Container className="max-w-195">
         <Reveal>
           <div className="relative overflow-hidden rounded-2xl border border-border bg-white shadow-lg">
             <div className="absolute inset-x-0 top-0 h-1 bg-gold" aria-hidden="true" />
@@ -44,99 +64,100 @@ export function BookingForm() {
               </h2>
               <p className="mt-[.4rem] text-[.96rem] text-body">{form.subtitle}</p>
 
-              {sent ? (
-                <div className="mt-7">{SUCCESS}</div>
+              {submitted ? (
+                <div className="mt-7">
+                  <FormSuccess
+                    title={form.success.title}
+                    message={form.success.message}
+                    action={form.success.action}
+                  />
+                </div>
               ) : (
                 <form
+                  ref={formRef}
                   onSubmit={handleSubmit}
+                  noValidate
                   aria-label="Book a meeting form"
                   className="mt-7 flex flex-col gap-5"
                 >
                   <div className="grid gap-5 sm:grid-cols-2">
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="bm-name" className={labelClass}>
-                        Full Name <span className="text-gold-deep">*</span>
-                      </label>
-                      <input
-                        id="bm-name"
-                        name="name"
-                        type="text"
-                        placeholder="Your full name"
-                        autoComplete="name"
-                        required
-                        className={fieldClass}
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="bm-email" className={labelClass}>
-                        Email Address <span className="text-gold-deep">*</span>
-                      </label>
-                      <input
-                        id="bm-email"
-                        name="email"
-                        type="email"
-                        placeholder="you@company.com"
-                        autoComplete="email"
-                        required
-                        className={fieldClass}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="bm-phone" className={labelClass}>
-                        Phone Number <span className="text-gold-deep">*</span>
-                      </label>
-                      <input
-                        id="bm-phone"
-                        name="phone"
-                        type="tel"
-                        placeholder="+63 9XX XXX XXXX"
-                        autoComplete="tel"
-                        required
-                        className={fieldClass}
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="bm-datetime" className={labelClass}>
-                        Preferred Day &amp; Time{" "}
-                        <span className="text-gold-deep">*</span>
-                      </label>
-                      <input
-                        id="bm-datetime"
-                        name="datetime"
-                        type="text"
-                        placeholder="e.g. Tuesday, 10:00 AM"
-                        required
-                        className={fieldClass}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="bm-message" className={labelClass}>
-                      Message{" "}
-                      <span className="font-normal text-body/60">(optional)</span>
-                    </label>
-                    <textarea
-                      id="bm-message"
-                      name="message"
-                      rows={4}
-                      placeholder="Tell us briefly what you'd like to discuss..."
-                      className={`${fieldClass} resize-y`}
+                    <TextField
+                      name="name"
+                      label="Full Name"
+                      required
+                      placeholder="Your full name"
+                      autoComplete="name"
+                      value={values.name}
+                      error={errors.name}
+                      onChange={setValue}
+                      onBlur={handleBlur}
+                    />
+                    <TextField
+                      name="email"
+                      label="Email Address"
+                      type="email"
+                      inputMode="email"
+                      required
+                      placeholder="you@company.com"
+                      autoComplete="email"
+                      value={values.email}
+                      error={errors.email}
+                      onChange={setValue}
+                      onBlur={handleBlur}
                     />
                   </div>
 
-                  <button
-                    type="submit"
-                    className="mt-1 inline-flex w-full items-center justify-center gap-[.6rem] rounded-md bg-gold px-[1.6rem] py-[.95rem] font-head font-bold text-navy shadow-gold transition-[transform,translate,box-shadow,background-color] duration-200 ease-in-out hover:duration-150 hover:ease-out hover:-translate-y-0.5 hover:bg-gold-soft"
-                  >
-                    {form.submitLabel}
-                    <Icon name="arrow-right" strokeWidth={2.2} className="h-4.5 w-4.5" />
-                  </button>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <DateField
+                      name="date"
+                      label="Preferred Date"
+                      required
+                      min={minDate}
+                      value={values.date}
+                      error={errors.date}
+                      onChange={setValue}
+                      onBlur={handleBlur}
+                    />
+                    <SelectField
+                      name="time"
+                      label="Preferred Time"
+                      required
+                      placeholder="Select a time"
+                      options={form.timeSlots}
+                      value={values.time}
+                      error={errors.time}
+                      onChange={setValue}
+                      onBlur={handleBlur}
+                    />
+                  </div>
 
-                  <p className="flex items-center justify-center gap-2 text-[.88rem] text-body/75">
+                  <PhoneField
+                    name="phone"
+                    label="Phone Number"
+                    required
+                    value={values.phone}
+                    error={errors.phone}
+                    onChange={setValue}
+                    onBlur={handleBlur}
+                  />
+
+                  <TextAreaField
+                    name="message"
+                    label="Message"
+                    optional
+                    placeholder="Tell us briefly what you'd like to discuss…"
+                    value={values.message}
+                    onChange={setValue}
+                    onBlur={handleBlur}
+                  />
+
+                  <SubmitButton
+                    label={form.submitLabel}
+                    submittingLabel={form.submittingLabel}
+                    submitting={submitting}
+                  />
+
+                  <p className="flex items-center justify-center gap-2 text-[.88rem] text-body">
                     <Icon
                       name="check"
                       strokeWidth={2.4}

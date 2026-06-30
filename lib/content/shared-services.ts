@@ -19,7 +19,7 @@ export const hero = {
   titlePre: "Shared Services",
   lead: "Portal provides centralized support for HR, finance, and operational functions, helping companies optimize processes, reduce costs, and focus on strategic priorities.",
   ctas: {
-    primary: { label: "Submit an Inquiry", href: "#inquiry" },
+    primary: { label: "Submit an Inquiry", href: "#contact" },
     secondary: { label: "Book a Consultation", href: "#contact" },
   },
 };
@@ -127,7 +127,7 @@ export const whoFor = {
   ctaCard: {
     title: "Cannot find your desired function?",
     body: "Submit an inquiry today. We'll reach out to you ASAP.",
-    link: { label: "Submit an inquiry", href: "#inquiry" },
+    link: { label: "Submit an inquiry", href: "#contact" },
   },
 };
 
@@ -243,5 +243,5 @@ export const finalCta = {
   heading: "Optimize Your Operations Today",
   lead: "Book a consultation to deploy skilled, compliant, and ready-to-work teams through Portal's Shared Services.",
   primaryCta: { label: "Book a Meeting", href: "/book-a-meeting" },
-  secondaryCta: { label: "View Our Services", href: "/#services" },
+  secondaryCta: { label: "Submit an Inquiry", href: "/contact" },
 };
