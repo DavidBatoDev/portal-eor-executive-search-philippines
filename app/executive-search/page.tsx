@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { ServiceHero } from "@/components/sections/shared/ServiceHero";
 import { WhyMatters } from "@/components/sections/executive-search/WhyMatters";
 import { Partners } from "@/components/sections/executive-search/Partners";
@@ -31,6 +32,9 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function ExecutiveSearchPage() {
+  // Temporarily hidden from the client — remove this line to re-enable the page.
+  notFound();
+
   return (
     <main>
       <ServiceHero
