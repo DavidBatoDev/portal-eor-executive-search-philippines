@@ -4,10 +4,9 @@
 import type { IconName } from "@/components/ui/Icon";
 
 export const meta = {
-  title:
-    "Payroll Outsourcing Philippines | Portal — Compliance-First Payroll Administration",
+  title: "Payroll Outsourcing Philippines | Accurate & Compliant",
   description:
-    "Portal helps companies outsource payroll administration in the Philippines with compliance-first processes, proprietary HRIS and Payroll systems, and nationwide support.",
+    "Efficient payroll outsourcing with proprietary HRIS, compliance-first management, and nationwide support for Philippine workforce needs.",
 };
 
 export const hero = {

@@ -11,10 +11,9 @@ export type ServiceLink = {
 };
 
 export const meta = {
-  title:
-    "Portal Philippines | EOR, Manpower, Executive Search & Workforce Solutions",
+  title: "Portal | Employer of Record, Executive Search, Workforce Philippines",
   description:
-    "Philippine-wide hiring, employment, and workforce support through Employer of Record, Manpower Solutions, Executive Search, Shared Services, HR Outsourcing, and BPO-Lite services.",
+    "Comprehensive workforce solutions for foreign companies: Employer of Record (EOR), Executive Search, payroll outsourcing, and HR management in the Philippines.",
 };
 
 // Services as they appear in the nav mega-dropdown and the hero preview panel.
@@ -365,28 +364,28 @@ export const team = {
   lead: "A team of workforce, recruitment, and HR specialists committed to helping companies hire, employ, and grow with confidence across the Philippines.",
   members: [
     {
-      name: "Noel De Loen",
-      role: "Founder & CEO",
-      photo: "/assets/team/noel.jpg",
-      alt: "Noel De Loen, Founder and CEO of Portal",
+      name: "Noel De Leon",
+      role: "Chairman",
+      photo: "/assets/team/noel.png",
+      alt: "Noel De Leon, Chairman of Portal",
     },
     {
-      name: "Elisha Nakazato",
-      role: "Marketing",
-      photo: "/assets/team/elisha.jpg",
-      alt: "Elisha Nakazato, Marketing",
+      name: "Paul Timothy De Leon",
+      role: "President",
+      photo: "/assets/team/paul.png",
+      alt: "Paul Timothy De Leon, President of Portal",
     },
     {
-      name: "Marco Villanueva",
-      role: "Head of Operations",
-      photo: "/assets/team/marco.jpg",
-      alt: "Marco Villanueva, Head of Operations",
+      name: "Mary Anne Sarah D. Dalisay",
+      role: "VP for Finance",
+      photo: "/assets/team/maryanne.png",
+      alt: "Mary Anne Sarah D. Dalisay, VP for Finance",
     },
     {
-      name: "Patricia Reyes",
-      role: "Executive Search Lead",
-      photo: "/assets/team/patricia.jpg",
-      alt: "Patricia Reyes, Executive Search Lead",
+      name: "Elisha Ann D. Nakazato",
+      role: "VP for Marketing",
+      photo: "/assets/team/elisha.png",
+      alt: "Elisha Ann D. Nakazato, VP for Marketing",
     },
   ],
 };
@@ -458,10 +457,10 @@ export const finalCta = {
 export const footer = {
   about:
     "Your trusted workforce partner in the Philippines — helping companies hire, employ, and scale with confidence.",
-  email: "Portal@helprofgrp.com",
+  email: "portal@helprofgrp.com",
   phoneDisplay: "+63 976 653 7269",
   phoneHref: "tel:+639766537269",
-  location: "Offices across Luzon, Visayas, and Mindanao",
+  location: "42 10th Avenue, Brgy. Socorro, Cubao, Quezon City, 1109 Metro Manila",
   columns: [
     {
       heading: "Services",
@@ -496,7 +495,7 @@ export const footer = {
   ],
   copyright: "© 2026 Portal. All rights reserved.",
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms & Conditions", href: "/terms" },
   ],
 };

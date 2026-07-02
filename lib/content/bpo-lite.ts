@@ -4,10 +4,9 @@
 import type { IconName } from "@/components/ui/Icon";
 
 export const meta = {
-  title:
-    "BPO-Lite Services Philippines | Portal — Flexible Back-Office Support Without the Complexity",
+  title: "BPO-Lite Services in the Philippines | Portal",
   description:
-    "Portal provides lean, compliant back-office operations for companies that need scalable, temporary, or project-specific support across the Philippines and internationally.",
+    "Lean back-office and operational support without a full BPO structure — streamline processes and reduce administrative burden.",
 };
 
 export const hero = {

@@ -4,10 +4,9 @@
 import type { IconName } from "@/components/ui/Icon";
 
 export const meta = {
-  title:
-    "Employer of Record (EOR) Philippines | Portal — Hire with Compliance and Confidence",
+  title: "Employer of Record (EOR) Philippines | Portal",
   description:
-    "Portal helps companies employ talent in the Philippines through compliance-first EOR services, without immediately setting up a local entity. Payroll, HRIS, onboarding, and nationwide workforce support.",
+    "Hire and manage Philippine employees compliantly with Portal's EOR services. Support for new hires, existing staff transfers, payroll, and HR administration.",
 };
 
 export const hero = {

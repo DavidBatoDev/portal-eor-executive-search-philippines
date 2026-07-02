@@ -4,10 +4,9 @@
 import type { IconName } from "@/components/ui/Icon";
 
 export const meta = {
-  title:
-    "Shared Services Philippines | Portal — Streamline Your Back-Office Operations",
+  title: "Shared Services Solutions | Centralized HR & Finance",
   description:
-    "Portal provides centralized support for HR, finance, and operational functions, helping companies optimize processes, reduce costs, and focus on strategic priorities.",
+    "Centralize HR, finance, and operations with Portal Shared Services — reduce overhead, improve compliance, and scale efficiently.",
 };
 
 export const hero = {

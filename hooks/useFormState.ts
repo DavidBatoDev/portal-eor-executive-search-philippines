@@ -28,6 +28,7 @@ export function useFormState({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const valuesRef = useRef<Values>(initial);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -71,10 +72,13 @@ export function useFormState({
       el?.focus();
       return;
     }
+    setSubmitError(null);
     setSubmitting(true);
     try {
       await onSubmit(valuesRef.current);
       setSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -85,6 +89,7 @@ export function useFormState({
     errors,
     submitting,
     submitted,
+    submitError,
     setValue,
     handleBlur,
     handleSubmit,

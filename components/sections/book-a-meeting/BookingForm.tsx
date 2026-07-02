@@ -11,6 +11,7 @@ import { SelectField } from "@/components/forms/SelectField";
 import { TextAreaField } from "@/components/forms/TextAreaField";
 import { SubmitButton } from "@/components/forms/SubmitButton";
 import { FormSuccess } from "@/components/forms/FormSuccess";
+import { FormError } from "@/components/forms/FormError";
 import { useFormState } from "@/hooks/useFormState";
 import {
   required,
@@ -40,13 +41,31 @@ const RULES: Rules = {
 };
 
 export function BookingForm() {
-  const { values, errors, submitting, submitted, setValue, handleBlur, handleSubmit, formRef } =
-    useFormState({
-      initial: INITIAL,
-      rules: RULES,
-      // UX-only: simulate a network round-trip so the busy state is visible.
-      onSubmit: () => new Promise((resolve) => setTimeout(resolve, 700)),
-    });
+  const {
+    values,
+    errors,
+    submitting,
+    submitted,
+    submitError,
+    setValue,
+    handleBlur,
+    handleSubmit,
+    formRef,
+  } = useFormState({
+    initial: INITIAL,
+    rules: RULES,
+    onSubmit: async (values) => {
+      const res = await fetch("/api/book-a-meeting", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? "We couldn't submit your meeting request. Please try again.");
+      }
+    },
+  });
 
   // Floor the date picker at today, set after mount to avoid hydration mismatch.
   const [minDate, setMinDate] = useState<string | undefined>(undefined);
@@ -80,6 +99,8 @@ export function BookingForm() {
                   aria-label="Book a meeting form"
                   className="mt-7 flex flex-col gap-5"
                 >
+                  {submitError && <FormError message={submitError} />}
+
                   <div className="grid gap-5 sm:grid-cols-2">
                     <TextField
                       name="name"
@@ -113,6 +134,7 @@ export function BookingForm() {
                       label="Preferred Date"
                       required
                       min={minDate}
+                      disableWeekends
                       value={values.date}
                       error={errors.date}
                       onChange={setValue}

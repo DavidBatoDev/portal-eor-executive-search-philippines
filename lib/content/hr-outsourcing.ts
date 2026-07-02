@@ -4,10 +4,9 @@
 import type { IconName } from "@/components/ui/Icon";
 
 export const meta = {
-  title:
-    "HR Outsourcing Philippines | Portal — Compliant, Scalable HR Operations",
+  title: "HR Outsourcing Philippines | HR Support & Admin",
   description:
-    "Portal helps companies manage HR processes efficiently and compliantly using proprietary HRIS and Payroll systems, so internal teams can focus on strategic priorities.",
+    "Comprehensive HR process outsourcing — onboarding, employee administration, benefits, and compliance across Philippine operations.",
 };
 
 export const hero = {

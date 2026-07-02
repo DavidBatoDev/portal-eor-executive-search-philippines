@@ -42,7 +42,7 @@ export function Team() {
                 {m.name}
               </p>
               <span className="mx-auto my-[.7rem] block h-0.5 w-7.5 rounded-xs bg-gold" />
-              <p className="font-body text-[.86rem] font-medium uppercase tracking-[.04em] text-body">
+              <p className="font-body text-[.86rem] font-medium tracking-[.04em] text-body">
                 {m.role}
               </p>
             </Reveal>

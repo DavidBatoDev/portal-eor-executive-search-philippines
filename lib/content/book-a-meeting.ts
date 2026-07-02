@@ -1,9 +1,9 @@
 import type { IconName } from "@/components/ui/Icon";
 
 export const meta = {
-  title: "Book a Meeting | Portal — Workforce Solutions Philippines",
+  title: "Contact Portal | Book a Consultation for Workforce Support",
   description:
-    "Schedule a consultation with Portal's workforce specialists. Talk through EOR, Payroll, HR, and workforce solutions tailored to your Philippine hiring needs.",
+    "Get in touch with Portal for EOR, payroll, HR outsourcing, executive search, and shared services solutions. Book your meeting today.",
 };
 
 export const hero = {

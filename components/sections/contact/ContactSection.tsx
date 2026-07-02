@@ -11,6 +11,7 @@ import { SelectField } from "@/components/forms/SelectField";
 import { TextAreaField } from "@/components/forms/TextAreaField";
 import { SubmitButton } from "@/components/forms/SubmitButton";
 import { FormSuccess } from "@/components/forms/FormSuccess";
+import { FormError } from "@/components/forms/FormError";
 import { useFormState } from "@/hooks/useFormState";
 import { required, email, phPhone, type Rules } from "@/lib/forms/validation";
 import { contact, form, SERVICE_OPTIONS } from "@/lib/content/contact";
@@ -73,13 +74,31 @@ const CONTACT_ITEMS = [
 ];
 
 export function ContactSection() {
-  const { values, errors, submitting, submitted, setValue, handleBlur, handleSubmit, formRef } =
-    useFormState({
-      initial: INITIAL,
-      rules: RULES,
-      // UX-only: simulate a network round-trip so the busy state is visible.
-      onSubmit: () => new Promise((resolve) => setTimeout(resolve, 700)),
-    });
+  const {
+    values,
+    errors,
+    submitting,
+    submitted,
+    submitError,
+    setValue,
+    handleBlur,
+    handleSubmit,
+    formRef,
+  } = useFormState({
+    initial: INITIAL,
+    rules: RULES,
+    onSubmit: async (values) => {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? "We couldn't submit your inquiry. Please try again.");
+      }
+    },
+  });
 
   return (
     <section
@@ -162,6 +181,8 @@ export function ContactSection() {
                   aria-label="Inquiry form"
                   className="mt-7 flex flex-col gap-5"
                 >
+                  {submitError && <FormError message={submitError} />}
+
                   <div className="grid gap-5 sm:grid-cols-2">
                     <TextField
                       name="company"

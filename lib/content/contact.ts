@@ -1,9 +1,9 @@
 // Contact page copy — source of truth. Transcribed from Portal Contact Page.html.
 
 export const meta = {
-  title: "Contact Us | Portal — Workforce Solutions Philippines",
+  title: "Contact Portal | Book a Consultation for Workforce Support",
   description:
-    "Get in touch with Portal for recruitment, manpower deployment, payroll services, HR outsourcing, and workforce management solutions in the Philippines. Tell us your requirements and our team will respond promptly.",
+    "Get in touch with Portal for EOR, payroll, HR outsourcing, executive search, and shared services solutions. Book your meeting today.",
 };
 
 export const contact = {
@@ -20,13 +20,13 @@ export const contact = {
   },
   email: {
     label: "Email",
-    display: "Portal@helprofgrp.com",
-    href: "mailto:Portal@helprofgrp.com",
+    display: "portal@helprofgrp.com",
+    href: "mailto:portal@helprofgrp.com",
   },
   address: {
     label: "Office Address",
-    primary: "Offices across Luzon, Visayas, and Mindanao",
-    secondary: "Nationwide workforce coverage",
+    primary: "42 10th Avenue, Brgy. Socorro, Cubao, Quezon City, 1109 Metro Manila, Philippines",
+    secondary: "Head office — with offices across Luzon, Visayas, and Mindanao",
   },
   hours: {
     label: "Business Hours",

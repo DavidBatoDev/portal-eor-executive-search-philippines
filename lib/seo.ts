@@ -13,10 +13,10 @@ export const SITE_URL = (
 export const SITE_NAME = "Portal Philippines";
 
 export const DEFAULT_TITLE =
-  "Portal Philippines | EOR, Manpower, Executive Search & Workforce Solutions";
+  "Portal | Employer of Record, Executive Search, Workforce Philippines";
 
 export const DEFAULT_DESCRIPTION =
-  "Philippine-wide hiring, employment, and workforce support through Employer of Record, Manpower Solutions, Executive Search, Shared Services, HR Outsourcing, and BPO-Lite services.";
+  "Comprehensive workforce solutions for foreign companies: Employer of Record (EOR), Executive Search, payroll outsourcing, and HR management in the Philippines.";
 
 export const KEYWORDS = [
   "Employer of Record Philippines",
@@ -96,18 +96,21 @@ export function siteJsonLd() {
         logo: `${SITE_URL}/logo.png`,
         image: `${SITE_URL}/og.png`,
         description: DEFAULT_DESCRIPTION,
-        email: "Portal@helprofgrp.com",
+        email: "portal@helprofgrp.com",
         telephone: "+63 976 653 7269",
         areaServed: { "@type": "Country", name: "Philippines" },
         address: {
           "@type": "PostalAddress",
+          streetAddress: "42 10th Avenue, Brgy. Socorro, Cubao",
+          addressLocality: "Quezon City",
+          addressRegion: "Metro Manila",
+          postalCode: "1109",
           addressCountry: "PH",
-          addressRegion: "Luzon, Visayas, and Mindanao",
         },
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "sales",
-          email: "Portal@helprofgrp.com",
+          email: "portal@helprofgrp.com",
           telephone: "+63 976 653 7269",
           areaServed: "PH",
           availableLanguage: ["en", "fil"],

@@ -15,8 +15,9 @@ import { cx } from "@/lib/cx";
 export function Nav() {
   const pathname = usePathname();
   const stickyScrolled = useStickyNav();
-  // Contact page has a light background from the top — always show the scrolled nav style.
-  const scrolled = stickyScrolled || pathname === "/contact" || pathname === "/book-a-meeting";
+  // These pages have a light background from the top — always show the scrolled nav style.
+  const LIGHT_FROM_TOP = new Set(["/contact", "/book-a-meeting", "/terms", "/privacy"]);
+  const scrolled = stickyScrolled || LIGHT_FROM_TOP.has(pathname);
   const [mobileOpen, setMobileOpen] = useState(false);
   // Controlled so the dropdown closes on click (hover/focus reopen it) — a pure
   // CSS hover menu would stay open after navigating to a service.

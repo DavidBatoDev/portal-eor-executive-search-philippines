@@ -1,12 +1,13 @@
 "use client";
 
-import { Field, FieldProps, controlClass } from "@/components/forms/Field";
-import { cx } from "@/lib/cx";
+import { Field, FieldProps } from "@/components/forms/Field";
+import { Calendar } from "@/components/ui/Calendar";
 
 /**
- * Native date picker, styled to match the form fields and floored at `min`
- * (today) so past dates can't be chosen. Weekend rejection is handled by the
- * `weekdayDate` validator since native inputs can't disable individual days.
+ * Themed calendar picker built on the shared Calendar popover, floored at
+ * `min` (today) so past dates can't be chosen. When `disableWeekends` is set,
+ * weekend cells are dimmed and unclickable up front — mirroring the
+ * `weekdayDate` validator instead of only catching it after submit.
  */
 export function DateField({
   name,
@@ -18,8 +19,9 @@ export function DateField({
   required,
   optional,
   min,
+  disableWeekends,
   className,
-}: FieldProps & { min?: string }) {
+}: FieldProps & { min?: string; disableWeekends?: boolean }) {
   return (
     <Field
       id={name}
@@ -29,23 +31,17 @@ export function DateField({
       error={error}
       className={className}
     >
-      <input
+      <Calendar
         id={name}
         name={name}
-        type="date"
         value={value}
         min={min}
-        aria-required={required || undefined}
-        aria-invalid={error ? true : undefined}
-        aria-describedby={error ? `${name}-error` : undefined}
-        onChange={(e) => onChange(name, e.target.value)}
+        disableWeekends={disableWeekends}
+        invalid={!!error}
+        required={required}
+        describedById={error ? `${name}-error` : undefined}
+        onChange={(v) => onChange(name, v)}
         onBlur={() => onBlur(name)}
-        className={cx(
-          controlClass(!!error),
-          // Keep height aligned with text inputs and tint the native picker icon.
-          "scheme-light [&::-webkit-calendar-picker-indicator]:cursor-pointer",
-          !value && "text-body"
-        )}
       />
     </Field>
   );

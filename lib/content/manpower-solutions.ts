@@ -4,10 +4,9 @@
 import type { IconName } from "@/components/ui/Icon";
 
 export const meta = {
-  title:
-    "Manpower Solutions Philippines | Portal — Deploy the Right Teams Quickly and Efficient",
+  title: "Manpower Solutions & Workforce Deployment | Portal PH",
   description:
-    "Portal provides structured, compliance-first workforce support across the Philippines and internationally — temporary staffing, project teams, and operational support deployed quickly.",
+    "Deploy skilled manpower nationwide with flexible workforce solutions in the Philippines — rapid hiring, operational support, and compliance.",
 };
 
 export const hero = {

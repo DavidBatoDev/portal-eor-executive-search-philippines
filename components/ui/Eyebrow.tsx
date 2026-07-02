@@ -6,7 +6,7 @@ const Line = () => (
 );
 
 /**
- * Section eyebrow: uppercase gold-deep label with a short gold rule before it
+ * Section eyebrow: gold-deep label with a short gold rule before it
  * (and after, when centered). `tone="soft"` switches to gold-soft for dark
  * sections, matching the inline overrides in the drafts.
  */
@@ -24,7 +24,7 @@ export function Eyebrow({
   return (
     <span
       className={cx(
-        "inline-flex items-center gap-[.6rem] font-body text-[.78rem] font-semibold uppercase tracking-[.14em]",
+        "inline-flex items-center gap-[.6rem] font-body text-[.78rem] font-semibold tracking-[.14em]",
         tone === "soft" ? "text-gold-soft" : "text-gold-deep",
         center && "justify-center",
         className

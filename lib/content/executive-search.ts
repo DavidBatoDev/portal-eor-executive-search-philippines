@@ -4,10 +4,9 @@
 import type { IconName } from "@/components/ui/Icon";
 
 export const meta = {
-  title:
-    "Executive Search Philippines | Portal — Recruit Senior Leaders with Confidence",
+  title: "Executive Search & Leadership Hiring Philippines | Portal",
   description:
-    "Portal helps companies identify, recruit, and onboard senior leaders and specialized professionals across the Philippines through a confidential, high-touch executive search process.",
+    "Find top executives and strategic leaders in the Philippines with Portal's executive search expertise and tailored recruiting process.",
 };
 
 export const hero = {
