@@ -19,7 +19,7 @@ export const hero = {
   lead: "Portal helps companies outsource payroll administration in the Philippines with compliance-first processes, proprietary HRIS and Payroll systems, and nationwide support.",
   ctas: {
     primary: { label: "Submit an Inquiry", href: "#contact" },
-    secondary: { label: "Book a Consultation", href: "#contact" },
+    secondary: { label: "Book a Meeting", href: "/book-a-meeting" },
   },
 };
 
@@ -63,7 +63,7 @@ export const painPoints = {
       "Proprietary HRIS & Payroll systems",
       "Nationwide operational support",
     ],
-    cta: { label: "Book a Consultation", href: "#contact" },
+    cta: { label: "Book a Meeting", href: "/book-a-meeting" },
   },
 };
 

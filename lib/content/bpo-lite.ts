@@ -19,7 +19,7 @@ export const hero = {
   lead: "Portal provides lean and compliant back-office operations for companies that need scalable, temporary, or project-specific support.",
   ctas: {
     primary: { label: "Submit an Inquiry", href: "#contact" },
-    secondary: { label: "Book a Consultation", href: "#contact" },
+    secondary: { label: "Book a Meeting", href: "/book-a-meeting" },
   },
 };
 

@@ -19,7 +19,7 @@ export const hero = {
   lead: "Portal helps companies identify, recruit, and onboard senior leaders and specialized professionals across the Philippines.",
   ctas: {
     primary: { label: "Submit an Inquiry", href: "#contact" },
-    secondary: { label: "Book a Consultation", href: "#contact" },
+    secondary: { label: "Book a Meeting", href: "/book-a-meeting" },
   },
 };
 

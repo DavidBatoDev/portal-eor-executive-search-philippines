@@ -19,7 +19,7 @@ export const hero = {
   lead: "Portal provides centralized support for HR, finance, and operational functions, helping companies optimize processes, reduce costs, and focus on strategic priorities.",
   ctas: {
     primary: { label: "Submit an Inquiry", href: "#contact" },
-    secondary: { label: "Book a Consultation", href: "#contact" },
+    secondary: { label: "Book a Meeting", href: "/book-a-meeting" },
   },
 };
 

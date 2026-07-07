@@ -19,7 +19,7 @@ export const hero = {
   lead: "Portal helps companies employ talent in the Philippines through compliance-first EOR services, without immediately setting up a local entity.",
   ctas: {
     primary: { label: "Submit an Inquiry", href: "#contact" },
-    secondary: { label: "Book a Consultation", href: "#contact" },
+    secondary: { label: "Book a Meeting", href: "/book-a-meeting" },
   },
 };
 
@@ -62,7 +62,7 @@ export const painPoints = {
       "Proprietary HRIS & payroll",
       "Nationwide operations",
     ],
-    cta: { label: "Book a Consultation", href: "#contact" },
+    cta: { label: "Book a Meeting", href: "/book-a-meeting" },
   },
 };
 

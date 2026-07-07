@@ -19,7 +19,7 @@ export const hero = {
   lead: "Portal provides structured workforce support across the Philippines and internationally. Scale your operations, project teams, or temporary staffing needs with our compliance-first manpower services.",
   ctas: {
     primary: { label: "Submit an Inquiry", href: "#contact" },
-    secondary: { label: "Book a Consultation", href: "#contact" },
+    secondary: { label: "Book a Meeting", href: "/book-a-meeting" },
   },
 };
 

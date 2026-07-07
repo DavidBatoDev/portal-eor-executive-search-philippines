@@ -19,7 +19,7 @@ export const hero = {
   lead: "Portal helps companies manage HR processes efficiently and compliantly using our proprietary HRIS and Payroll System, allowing internal teams to focus on strategic priorities while we handle day-to-day HR administration.",
   ctas: {
     primary: { label: "Submit an Inquiry", href: "#contact" },
-    secondary: { label: "Book a Consultation", href: "#contact" },
+    secondary: { label: "Book a Meeting", href: "/book-a-meeting" },
   },
 };
 
