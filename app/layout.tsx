@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Inter } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import { Nav } from "@/components/layout/Nav";
 import { SmoothAnchors } from "@/components/layout/SmoothAnchors";
@@ -87,6 +88,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
+      <GoogleTagManager gtmId="GTM-5BC2KM4X" />
       <body className="font-body text-body antialiased text-[17px] leading-[1.7]">
         <script
           type="application/ld+json"
