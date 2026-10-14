@@ -94,7 +94,7 @@ export function ChatWidget() {
         >
           {/* Header */}
           <div className="flex items-center gap-3 bg-navy px-5 py-4 text-white">
-            <LogoMark className="h-7 w-7 flex-none text-gold" />
+            <LogoMark className="h-8" />
             <div className="flex-1">
               <p className="font-head text-[.95rem] font-bold leading-tight text-white">
                 Portal Assistant
