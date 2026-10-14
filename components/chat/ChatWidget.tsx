@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { MarkTile } from "@/components/ui/LogoMark";
+import { LogoMark } from "@/components/ui/LogoMark";
 import { Icon } from "@/components/ui/Icon";
 import { footer } from "@/lib/content/home";
 import { cx } from "@/lib/cx";
@@ -94,7 +94,7 @@ export function ChatWidget() {
         >
           {/* Header */}
           <div className="flex items-center gap-3 bg-navy px-5 py-4 text-white">
-            <MarkTile onDark />
+            <LogoMark className="h-8" />
             <div className="flex-1">
               <p className="font-head text-[.95rem] font-bold leading-tight text-white">
                 Portal Assistant

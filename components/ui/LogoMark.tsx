@@ -70,17 +70,21 @@ export function MarkTile({
   );
 }
 
-// Full lockup: the mark (in its tile) + PORTAL name. `onDark` keeps the word white.
+// Full lockup: the mark + PORTAL name. `onDark` keeps the word white.
+// `tile` sets the mark on its white tile - the FOOTER only (owner's call,
+// 2026-10-14). Everywhere else the mark stands on its own, dark grounds too.
 export function Logo({
   onDark = false,
+  tile = false,
   className = "",
 }: {
   onDark?: boolean;
+  tile?: boolean;
   className?: string;
 }) {
   return (
     <span className={`inline-flex items-center gap-[.62rem] ${className}`}>
-      <MarkTile onDark={onDark} />
+      {tile ? <MarkTile onDark={onDark} /> : <LogoMark className="h-8" />}
       <span
         className={`font-head text-[1.42rem] font-extrabold tracking-[.16em] pl-[.04em] ${
           onDark ? "text-white" : "text-navy"

@@ -37,7 +37,7 @@ export function Footer() {
       <Container>
         <div className="grid grid-cols-1 gap-10 pb-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div className="max-w-80 md:col-span-2 lg:col-span-1">
-            <Logo onDark />
+            <Logo onDark tile />
             <p className="mt-[1.2rem] text-[.95rem] leading-[1.7]">{footer.about}</p>
 
             <div className="mt-[1.4rem] flex flex-col gap-[.6rem] text-[.92rem]">
